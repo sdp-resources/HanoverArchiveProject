@@ -11,6 +11,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="com.sparkjava:spark-core:2.9.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="org.slf4j:slf4j-simple:1.7.26" level="project" />
+    <orderEntry type="library" name="com.sparkjava:spark-template-handlebars:2.7.1" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
