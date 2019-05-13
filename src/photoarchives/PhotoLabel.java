@@ -1,11 +1,11 @@
 package photoarchives;
 
-public class InfoLabel {
+public class PhotoLabel implements PhotoLabelInterface {
 
   private String data;
 
 
-  public InfoLabel(String data) {
+  public PhotoLabel(String data) {
     this.data = data;
   }
 
