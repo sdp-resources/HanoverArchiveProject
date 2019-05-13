@@ -9,7 +9,7 @@ public class PhotoLabel implements PhotoLabelInterface {
   }
 
   public PhotoLabel(){
-    presetLabel p1 = presetLabel.year;
+    presetLabel p1 = presetLabel.empty;
     this.data = p1;
   }
 
