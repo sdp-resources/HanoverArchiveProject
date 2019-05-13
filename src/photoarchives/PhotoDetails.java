@@ -1,15 +1,23 @@
 package photoarchives;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PhotoDetails {
-  private Photo photo;
+  private List<PhotoLabelInterface> labels;
 
 
 
-  public PhotoDetails(Photo photo) {
-    this.photo = photo;
+  public PhotoDetails(){
+    labels = new ArrayList<>();
   }
 
-  public Photo getPhoto() {
-    return photo;
+  public boolean isEmpty() {
+    return labels.isEmpty();
+  }
+
+
+  public Object getLabels() {
+    return labels;
   }
 }

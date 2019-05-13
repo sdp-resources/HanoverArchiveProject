@@ -1,5 +1,4 @@
 import org.junit.Test;
-import photoarchives.Photo;
 import photoarchives.PhotoDetails;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -9,11 +8,12 @@ public class PhotoDetailTest {
 
 
   @Test
-  public void containsPhoto() {
-    Photo photo = new Photo("dir", "PhotoName", "photoID");
-    PhotoDetails photodetails = new PhotoDetails(photo);
-    assertThat(photodetails.getPhoto(), is(photo));
-
-
+  public void canCreateDetails() {
+    PhotoDetails details = new PhotoDetails();
+  }
+  @Test
+  public void createsEmptyList() {
+    PhotoDetails details = new PhotoDetails();
+    assertThat(details.isEmpty(), is(true));
   }
 }
