@@ -29,5 +29,7 @@ public class Photo {
     this.title = newTitle;
   }
 
-
+  public void setSource(String s) {
+    this.source = s;
+  }
 }

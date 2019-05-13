@@ -3,20 +3,26 @@ package photoarchives;
 import java.util.ArrayList;
 
 public class PhotoList {
-  int length = 0;
-  ArrayList<Photo> photoList = new ArrayList<Photo>(length); ;
+  ArrayList<Photo> photoList = new ArrayList<Photo>(); ;
 
   public int getLength() {
-    return length;
+    return photoList.size();
   }
 
   public void addPhoto(Photo photo) {
     photoList.add(photo);
-    length++;
   }
 
   public void removePhoto(Photo photo) {
     photoList.remove(photo);
-    length--;
+  }
+
+  public ArrayList<String> printTitleList() {
+    ArrayList<String> titleList = new ArrayList<String>();
+    for (int i = 0; i < photoList.size(); i++)
+    {
+      titleList.add(photoList.get(i).getTitle());
+    }
+    return titleList;
   }
 }

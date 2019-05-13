@@ -36,5 +36,11 @@ public class PhotoTest {
     assertEquals(photo, uploadPhoto.getPhoto());
   }
 
+  @Test
+  public void ImplementFilePath_ReceivePhoto() throws Exception {
+   photo.setSource("/usr...");
+   assertEquals("/usr...", photo.getSource());
+  }
+
 
 }

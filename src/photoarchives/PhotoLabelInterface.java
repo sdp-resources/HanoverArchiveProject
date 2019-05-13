@@ -1,11 +1,11 @@
 package photoarchives;
 
 public interface PhotoLabelInterface {
-  enum presetLabel{
+  enum String {
     building, year, location, subject, empty;
   }
 
-  presetLabel getData();
+  String getValue();
 
-  void setData (presetLabel data);
+  void setValue(String value);
 }
