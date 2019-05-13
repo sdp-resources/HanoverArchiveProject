@@ -19,11 +19,13 @@ public class Photo {
     return this.title;
   }
 
+  public String getID() {
+    return this.id;
+  }
+
   public void setTitle(String newTitle) {
     this.title = newTitle;
   }
 
-  public String getID() {
-    return this.id;
-  }
+
 }
