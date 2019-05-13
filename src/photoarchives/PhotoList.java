@@ -14,4 +14,9 @@ public class PhotoList {
     photoList.add(photo);
     length++;
   }
+
+  public void removePhoto(Photo photo) {
+    photoList.remove(photo);
+    length--;
+  }
 }
