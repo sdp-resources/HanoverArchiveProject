@@ -2,22 +2,22 @@ package photoarchives;
 
 public class PhotoLabel implements PhotoLabelInterface {
 
-  private presetLabel data;
+  private String value;
 
-  public PhotoLabel(presetLabel data) {
-    this.data = data;
+  public PhotoLabel(String data) {
+    this.value = data;
   }
 
   public PhotoLabel(){
-    presetLabel p1 = presetLabel.empty;
-    this.data = p1;
+    String p1 = String.empty;
+    this.value = p1;
   }
 
-  public presetLabel getData() {
-    return data;
+  public String getValue() {
+    return value;
   }
 
-  public void setData(presetLabel data) {
-    this.data = data;
+  public void setValue(String value) {
+    this.value = value;
   }
 }
