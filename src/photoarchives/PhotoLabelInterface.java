@@ -5,7 +5,7 @@ public interface PhotoLabelInterface {
     building, year, location, subject;
   }
 
-  String getData();
+  presetLabel getData();
 
-  void setData(String data);
+  void setData (presetLabel data);
 }
