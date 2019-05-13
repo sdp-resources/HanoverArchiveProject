@@ -13,13 +13,9 @@ public class PhotoTest {
     String title = "title";
     photo = new Photo(source, title);
   }
+
   @Test
-  public void makePhoto() throws Exception {
-    assertEquals("source", photo.getSource());
-    assertEquals("title", photo.getTitle());
-  }
-  @Test
-  public void editTitle() throws Exception {
+  public void whenTitleIsEdited_ExpectNewPhotoTitle() throws Exception {
     String newTitle = "new title";
     photo.setTitle(newTitle);
     assertEquals(newTitle, photo.getTitle());
