@@ -15,7 +15,7 @@ public class SeePhotoList {
   }
 
   @Test
-  public void hasOnePhotos(){
+  public void hasOnePhoto(){
     photoList.addPhoto(photo);
     assertEquals(photoList.getLength(), 1);
 
