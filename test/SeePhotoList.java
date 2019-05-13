@@ -15,10 +15,17 @@ public class SeePhotoList {
   }
 
   @Test
-  public void hasOnePhoto(){
+  public void addOnePhoto(){
     photoList.addPhoto(photo);
     assertEquals(photoList.getLength(), 1);
 
+  }
+
+  @Test
+  public void removePhoto(){
+    photoList.addPhoto(photo);
+    photoList.removePhoto(photo);
+    assertEquals(photoList.getLength(), 0);
   }
 
 
