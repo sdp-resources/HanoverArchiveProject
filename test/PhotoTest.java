@@ -27,6 +27,14 @@ public class PhotoTest {
 
   @Test
   public void uploadNewPhoto() throws Exception {
-    UploadPhoto uploadPhoto = new UploadPhoto();
+    UploadPhoto uploadPhoto = new UploadPhoto(photo);
   }
+
+  @Test
+  public void WhenPhotoIsReturned_EqualsPhoto() throws Exception {
+    UploadPhoto uploadPhoto = new UploadPhoto(photo);
+    assertEquals(photo, uploadPhoto.getPhoto());
+  }
+
+
 }

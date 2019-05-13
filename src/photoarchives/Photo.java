@@ -11,6 +11,8 @@ public class Photo {
     this.id = id;
   }
 
+  public Photo() {}
+
   public String getSource() {
     return this.source;
   }
