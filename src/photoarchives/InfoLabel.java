@@ -13,5 +13,7 @@ public class InfoLabel {
     return data;
   }
 
-
+  public void setData(String data) {
+    this.data = data;
+  }
 }
