@@ -2,16 +2,16 @@ package photoarchives;
 
 public class  PhotoLabel implements PhotoLabelInterface {
 
-  private String kind;
+  private Kind kind;
   private String value;
 
-  public PhotoLabel(String kind, String value) {
+  public PhotoLabel(Kind kind, String value) {
     this.value = value;
     this.kind =  kind;
   }
 
   public PhotoLabel(){
-    this.kind = "";
+    this.kind = Kind.NONE;
     this.value = "";
   }
 
@@ -23,11 +23,32 @@ public class  PhotoLabel implements PhotoLabelInterface {
     this.value = value;
   }
 
-  public String getKind() {
+  public Kind getKind() {
     return kind;
   }
 
-  public void setKind(String kind) {
+  public void setKind(Kind kind) {
     this.kind = kind;
+  }
+
+  public enum Kind {
+    TITLE("Title"),
+    DESCRIPTION("Description"),
+    DATE("Date"),
+    SUBJECT("Subject"),
+    HANOVER_SUBJECT("Hanover Subject"),
+    LOCATION("Location"),
+    CREATOR("Creator"),
+    OBJECT_NUMBER("Object Number"),
+    COLLECTION_NAME("Collection Name"),
+    COPYRIGHT("Copyright"),
+    URL("URL"),
+    NONE("None");
+
+    private final String name;
+
+    Kind(String kind) { this.name = kind; }
+
+    public String getName() { return name; }
   }
 }

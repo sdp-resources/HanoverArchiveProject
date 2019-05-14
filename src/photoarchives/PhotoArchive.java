@@ -1,6 +1,8 @@
 package photoarchives;
 import photoarchives.PhotoList;
 
+import java.util.UUID;
+
 import java.io.File;
 
 public class PhotoArchive {
@@ -28,6 +30,12 @@ public class PhotoArchive {
 
   public void addPhotoToArchive(Photo newPhoto) {
     this.photos.addPhoto(newPhoto);
+    String uniqueID = UUID.randomUUID().toString();
+    newPhoto.setID(uniqueID);
+  }
+
+  public void clear() {
+    this.photos.clear();
   }
 
   public String getDirectory() {
