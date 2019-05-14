@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import photoarchives.Photo;
-import photoarchives.UploadPhoto;
+import photoarchives.PhotoUploader;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -9,33 +9,36 @@ public class PhotoTest {
   private Photo photo;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     String source = "source";
     photo = new Photo(source);
   }
 
   @Test
-  public void createDefaultImage() throws Exception {
+  public void createDefaultImage() {
     Photo p1 = new Photo();
     assertEquals(null, p1.getSource());
     assertEquals(null, p1.getID());
   }
 
   @Test
-  public void uploadNewPhoto() throws Exception {
-    UploadPhoto uploadPhoto = new UploadPhoto(photo);
+  public void createImageWithGivenSource() {
+    assertEquals("source", photo.getSource());
+    assertEquals(null, photo.getID());
   }
 
-  @Test
-  public void WhenPhotoIsReturned_EqualsPhoto() throws Exception {
-    UploadPhoto uploadPhoto = new UploadPhoto(photo);
-    assertEquals(photo, uploadPhoto.getPhoto());
-  }
 
   @Test
-  public void ImplementFilePath_ReceivePhoto() throws Exception {
+  public void setNewSource_ExpectChange() {
    photo.setSource("/usr...");
    assertEquals("/usr...", photo.getSource());
+  }
+
+  @Test
+  public void setNewID_ExpectChange() {
+    String testID = "001";
+    photo.setID(testID);
+    assertEquals(testID, photo.getID());
   }
 
 

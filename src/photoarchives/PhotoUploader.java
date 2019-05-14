@@ -6,11 +6,11 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 
-public class UploadPhoto extends Photo {
+public class PhotoUploader extends Photo {
   private Photo photo;
 
 
-  public UploadPhoto(Photo photo){
+  public PhotoUploader(Photo photo){
     this.photo = photo;
 
   }
