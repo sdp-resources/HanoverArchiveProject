@@ -43,7 +43,6 @@ public class PhotoListTests {
   }
 
 
-
   private void addThreePhotosToList() {
     Photo p1 = new Photo("test source1" );
     Photo p2 = new Photo("test source2") ;
