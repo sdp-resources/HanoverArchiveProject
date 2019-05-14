@@ -9,7 +9,7 @@ public class Photo {
     this.id = null;
   }
 
-  public Photo(String source ) {
+  public Photo(String source) {
     this.source = source;
     this.id = null;
   }
@@ -27,5 +27,5 @@ public class Photo {
     this.source = s;
   }
 
-
+  public void setID(String newID) { this.id = newID; }
 }
