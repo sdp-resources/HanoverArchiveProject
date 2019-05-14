@@ -4,12 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class LabelSet {
-  private Set<String> labels = new HashSet<>();
+  private Set<PhotoLabel> labels = new HashSet<>();
   public boolean isEmpty() {
     return labels.isEmpty();
   }
 
-  public void add(String label) {
+  public void add(PhotoLabel label) {
     labels.add(label);
   }
 
@@ -17,15 +17,15 @@ public class LabelSet {
     return labels.size();
   }
 
-  public void remove(String label) {
+  public void remove(PhotoLabel label) {
     labels.remove(label);
   }
 
-  public boolean contains(String label) {
+  public boolean contains(PhotoLabel label) {
     return labels.contains(label);
   }
 
-  public String getLabel(String label1) {
+  public PhotoLabel getLabel(PhotoLabel label1) {
     return label1;
   }
 }
