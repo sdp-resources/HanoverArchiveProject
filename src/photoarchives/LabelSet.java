@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class LabelSet {
   private Set<PhotoLabel> labels = new HashSet<>();
+
   public boolean isEmpty() {
     return labels.isEmpty();
   }
@@ -17,9 +18,7 @@ public class LabelSet {
     return labels.size();
   }
 
-  public void remove(PhotoLabel label) {
-    labels.remove(label);
-  }
+  public void remove(PhotoLabel label) { labels.remove(label); }
 
   public boolean contains(PhotoLabel label) {
     return labels.contains(label);

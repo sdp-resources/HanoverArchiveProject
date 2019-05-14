@@ -1,6 +1,6 @@
 package photoarchives;
 
-public class PhotoLabel implements PhotoLabelInterface {
+public class  PhotoLabel implements PhotoLabelInterface {
 
   private String kind;
   private String value;
