@@ -1,6 +1,5 @@
 out/*
-.idea/workspace.xml
-.idea/misc.xml
+.idea/*
 # Compiled class file
 *.class
 
