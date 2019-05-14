@@ -2,34 +2,30 @@ package photoarchives;
 
 public class Photo {
   private String source;
-  private String title;
   private String id;
 
-  public Photo(String source, String title, String id) {
-    this.source = source;
-    this.title = title;
-    this.id = id;
+  public Photo() {
+    this.source = null;
+    this.id = null;
   }
 
-  public Photo() {}
+  public Photo(String source ) {
+    this.source = source;
+    this.id = null;
+  }
+
 
   public String getSource() {
     return this.source;
-  }
-
-  public String getTitle() {
-    return this.title;
   }
 
   public String getID() {
     return this.id;
   }
 
-  public void setTitle(String newTitle) {
-    this.title = newTitle;
-  }
-
   public void setSource(String s) {
     this.source = s;
   }
+
+
 }

@@ -11,18 +11,14 @@ public class PhotoTest {
   @Before
   public void setUp() throws Exception {
     String source = "source";
-    String title = "title";
-    String id = "id";
-    photo = new Photo(source, title, id);
+    photo = new Photo(source);
   }
 
   @Test
-  public void whenTitleIsEdited_ExpectNewPhotoTitle() throws Exception {
-    String newTitle = "new title";
-    photo.setTitle(newTitle);
-    assertEquals(newTitle, photo.getTitle());
-    assertEquals("source", photo.getSource());
-    assertEquals("id", photo.getID());
+  public void createDefaultImage() throws Exception {
+    Photo p1 = new Photo();
+    assertEquals(null, p1.getSource());
+    assertEquals(null, p1.getID());
   }
 
   @Test

@@ -17,12 +17,4 @@ public class PhotoList {
     photoList.remove(photo);
   }
 
-  public ArrayList<String> printTitleList() {
-    ArrayList<String> titleList = new ArrayList<String>();
-    for (int i = 0; i < photoList.size(); i++)
-    {
-      titleList.add(photoList.get(i).getTitle());
-    }
-    return titleList;
-  }
 }

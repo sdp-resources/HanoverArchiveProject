@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class PhotoListTests {
   PhotoList photoList = new PhotoList();
-  Photo photo = new Photo("test source", "test title");
+  Photo photo = new Photo("test source");
 
   @Test
   public void hasPhotos() {
@@ -36,20 +36,12 @@ public class PhotoListTests {
     assertEquals(photoList.getLength(),3);
   }
 
-  @Test
-  public void testPhotoListPrint(){
-    addThreePhotos();
-    ArrayList<String> Test = photoList.printTitleList();
-    assertEquals("Students", Test.get(0));
-    assertEquals("Faculty", Test.get(1));
-    assertEquals("Athletics", Test.get(2));
-  }
 
 
   private void addThreePhotosToList() {
-    Photo p1 = new Photo("test source1", "Students");
-    Photo p2 = new Photo("test source2", "Faculty");
-    Photo p3 = new Photo("test source3", "Athletics");
+    Photo p1 = new Photo("test source1" );
+    Photo p2 = new Photo("test source2") ;
+    Photo p3 = new Photo("test source3");
     photoList.addPhoto(p1);
     photoList.addPhoto(p2);
     photoList.addPhoto(p3);
