@@ -8,42 +8,50 @@ public class LabelSetTest {
 
   private LabelSet labels;
 
+  private void addLabelsForTests(int numberOfLabels) {
+    while (numberOfLabels > 0) {
+      labels.add("label" + numberOfLabels);
+      numberOfLabels--;
+    }
+  }
+
   @Before
   public void setUp() throws Exception {
     labels = new LabelSet();
   }
-
   @Test
   public void newSetIsEmpty() {
     assertTrue(labels.isEmpty());
   }
   @Test
   public void setOfSizeOneIsNotEmpty() {
-    labels.add("label");
+    addLabelsForTests(1);
     assertFalse(labels.isEmpty());
   }
   @Test
   public void setOfSizeOneReturnsOne() {
-    labels.add("label");
+    addLabelsForTests(1);
     assertEquals(labels.size(), 1);
   }
   @Test
   public void setOfSizeThreeReturnsThree() {
-    labels.add("label");
-    labels.add("label2");
-    labels.add("label3");
+    addLabelsForTests(3);
     assertEquals(labels.size(), 3);
   }
   @Test
   public void checkThatLabelRemoveWorks() {
-    labels.add("label");
-    labels.remove("label");
+    addLabelsForTests(1);
+    labels.remove("label1");
     assertTrue(labels.isEmpty());
   }
   @Test
   public void checkForSpecificLabelInSet() {
-    labels.add("label");
-    labels.add("label2");
+    addLabelsForTests(2);
     assertTrue(labels.contains("label2"));
+  }
+  @Test
+  public void checkThatGetLabelWorks() {
+    addLabelsForTests(1);
+    assertEquals(labels.getLabel("label1"), "label1");
   }
 }

@@ -24,4 +24,8 @@ public class LabelSet {
   public boolean contains(String label) {
     return labels.contains(label);
   }
+
+  public String getLabel(String label1) {
+    return label1;
+  }
 }
