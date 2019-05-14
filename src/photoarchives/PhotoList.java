@@ -1,9 +1,10 @@
 package photoarchives;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class PhotoList {
-  ArrayList<Photo> photoList = new ArrayList<Photo>(); ;
+public class PhotoList /*implements Iterable<Photo>*/ {
+  ArrayList<Photo> photoList = new ArrayList<Photo>();
 
   public int getLength() {
     return photoList.size();
@@ -18,4 +19,5 @@ public class PhotoList {
   }
 
   public void clear() { photoList.clear(); }
+
 }
