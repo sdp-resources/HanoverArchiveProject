@@ -2,17 +2,16 @@ package photoarchives;
 
 public class PhotoLabel implements PhotoLabelInterface {
 
-  private presetlabel kind;
+  private String kind;
   private String value;
 
-  public PhotoLabel(presetlabel kind, String value) {
+  public PhotoLabel(String kind, String value) {
     this.value = value;
     this.kind =  kind;
   }
 
   public PhotoLabel(){
-    presetlabel p1 = presetlabel.empty;
-    this.kind = p1;
+    this.kind = "";
     this.value = "";
   }
 
@@ -22,5 +21,13 @@ public class PhotoLabel implements PhotoLabelInterface {
 
   public void setValue(String value) {
     this.value = value;
+  }
+
+  public String getKind() {
+    return kind;
+  }
+
+  public void setKind(String kind) {
+    this.kind = kind;
   }
 }
