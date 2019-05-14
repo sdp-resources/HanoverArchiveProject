@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import photoarchives.Photo;
-import photoarchives.PhotoUploader;
+
 
 import static junit.framework.TestCase.assertEquals;
 

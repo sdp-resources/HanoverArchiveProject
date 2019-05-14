@@ -2,10 +2,9 @@ import org.junit.Test;
 import photoarchives.Photo;
 import photoarchives.PhotoList;
 
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+
 
 public class PhotoListTests {
   PhotoList photoList = new PhotoList();
@@ -28,6 +27,13 @@ public class PhotoListTests {
     photoList.addPhoto(photo);
     photoList.removePhoto(photo);
     assertEquals(photoList.getLength(), 0);
+  }
+
+  @Test
+  public void clearPhotoList() {
+    addThreePhotosToList();
+    photoList.clear();
+    assertEquals(0, photoList.getLength());
   }
 
   @Test

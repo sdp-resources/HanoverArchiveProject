@@ -17,4 +17,5 @@ public class PhotoList {
     photoList.remove(photo);
   }
 
+  public void clear() { photoList.clear(); }
 }
