@@ -1,9 +1,10 @@
 package photoarchives;
 import photoarchives.PhotoList;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.UUID;
-
-import java.io.File;
 
 public class PhotoArchive {
   private String name;
@@ -32,6 +33,15 @@ public class PhotoArchive {
     this.photos.addPhoto(newPhoto);
     String uniqueID = createUniqueIdForUploadedPhoto();
     newPhoto.setID(uniqueID);
+
+    System.out.println(newPhoto.getSource());
+    try {
+      BufferedImage image;
+      image = ImageIO.read(new File(newPhoto.getSource()));
+      File targetFile = new File(directory + uniqueID);
+      ImageIO.write(image, "jpeg", targetFile);
+    } catch (IOException e) {
+    }
   }
 
   public void clear() {
