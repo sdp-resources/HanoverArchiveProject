@@ -1,5 +1,4 @@
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import photoarchives.PhotoLabel;
 import photoarchives.PhotoLabelInterface;
@@ -31,19 +30,19 @@ public class EditLabelTests {
   public void TestEmptyLabelData(){
     PhotoLabel newLabel = new PhotoLabel();
     assertThat(newLabel.getValue(), is(""));
-    assertThat(newLabel.getKind(), is(""));
+    assertThat(newLabel.getKind(), is(PhotoLabel.Kind.NONE));
   }
 
   @Test
   public void TestConstructor(){
     PhotoLabel newLabel = new PhotoLabel(PhotoLabel.Kind.DATE, "1999");
     assertThat(newLabel.getValue(), is("1999"));
-    assertThat(newLabel.getKind(), is ("year"));
+    assertThat(newLabel.getKind(), is (PhotoLabel.Kind.DATE));
   }
 
   @Test
   public void TestKind(){
     label.setKind(PhotoLabel.Kind.LOCATION);
-    assertEquals("Location", label.getKind());
+    assertEquals(PhotoLabel.Kind.LOCATION, label.getKind());
   }
 }
