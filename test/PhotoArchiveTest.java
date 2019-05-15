@@ -20,8 +20,6 @@ public class PhotoArchiveTest {
     photos = new PhotoList();
     String archiveDir = "/tmp/" + UUID.randomUUID().toString();
     photoArchive = new PhotoArchive("dog", archiveDir);
-
-
   }
 
 
