@@ -2,15 +2,27 @@ import org.junit.Test;
 import photoarchives.Photo;
 import photoarchives.PhotoArchive;
 import photoarchives.PhotoList;
+import java.util.UUID;
 
 import static junit.framework.Assert.assertTrue;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class PhotoArchiveTest {
-  private PhotoList photos = new PhotoList();
+  private PhotoList photos;
   PhotoArchive photoArchive = new PhotoArchive("dog", "");
-  private Photo blankPhoto = new Photo();
+  private Photo blankPhoto;
+
+  @Setup
+  public void createInitialArchive() {
+    blankPhoto = new Photo();
+    photos = new PhotoList();
+    String archiveDir = "/tmp/" + UUID.randomUUID().toString();
+    photoArchive = new PhotoArchive("dog", archiveDir);
+
+
+  }
+
 
   @Test
   public void PhotoArchiveKnowsNameTest() {
