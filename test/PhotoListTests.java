@@ -43,15 +43,16 @@ public class PhotoListTests {
     assertEquals(photoList.getLength(),3);
   }
 
-  @Ignore
-  @Test
+
+
   //public void getNextPhoto(){
     //addThreePhotos();
     //Photo p1 = photoList.next();
     //assertEquals("test source2",p1.getSource());
   //}
 
-  private void addThreePhotosToList() {
+  @Test
+  public void addThreePhotosToList() {
     Photo p1 = new Photo("test source1" );
     Photo p2 = new Photo("test source2") ;
     Photo p3 = new Photo("test source3");
