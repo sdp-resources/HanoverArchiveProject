@@ -9,14 +9,7 @@ import javax.imageio.ImageIO;
 public class PhotoUploader extends Photo {
   private Photo photo;
 
-
-  public PhotoUploader(Photo photo){
-    this.photo = photo;
-
-  }
-
-  public Photo getPhoto() {
-
-    return this.photo;
+  public Photo uploadPhoto(String photoSource) {
+    return new Photo(photoSource);
   }
 }

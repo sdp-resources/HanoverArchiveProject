@@ -27,7 +27,6 @@ public class PhotoArchiveTest {
   @Test
   public void PhotoArchiveKnowsNameTest() {
     assertEquals("dog", photoArchive.getName());
-
   }
 
   @Test
@@ -41,8 +40,9 @@ public class PhotoArchiveTest {
     photoArchive.addPhotoToArchive(blankPhoto);
     assertEquals(1, photoArchive.getPhotoList().getLength());
   }
+
   @Test
-  public void clearallPhotosfromPhotoArchive(){
+  public void clearAllPhotosFromPhotoArchive(){
     Photo p1 = new Photo("test source1" );
     Photo p2 = new Photo("test source2") ;
     Photo p3 = new Photo("test source3");
@@ -52,13 +52,6 @@ public class PhotoArchiveTest {
     photoArchive.clear();
     assertEquals(0,photoArchive.getPhotoList().getLength());
   }
-  @Test
-  public void canSetIds(){
-    Photo p1 = new Photo("test source1");
-    photoArchive.addPhotoToArchive(p1);
-    assertEquals("cat", p1.getID());
-
-  }
 
   @Test
   public void createPhotoArchive() {
@@ -66,7 +59,6 @@ public class PhotoArchiveTest {
     String basicDirectory = archive.getDirectory();
     assertEquals("/home/helmersj20/cs321/HanoverArchive/", basicDirectory);
     archive.initialize();
-
   }
 }
 
