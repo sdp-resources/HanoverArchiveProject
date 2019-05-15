@@ -6,6 +6,7 @@ import photoarchives.PhotoList;
 
 import java.util.Iterator;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
@@ -49,9 +50,15 @@ public class PhotoListTests {
 
   @Test
   public void whenListIsEmpty_hasNextIsFalse(){
-    PhotoList photoList = new PhotoList();
     Iterator<Photo> iter = photoList.iterator();
     assertFalse(iter.hasNext());
+  }
+
+  @Test
+  public void whenListIsNotEmpty_hasNextIsTrue(){
+    addThreePhotosToList();
+    Iterator<Photo> iter = photoList.iterator();
+    assertTrue(iter.hasNext());
   }
 
   @Test

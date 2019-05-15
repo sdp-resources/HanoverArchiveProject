@@ -26,12 +26,7 @@ public class PhotoList {
     }
 
     @Override
-    public boolean hasNext(){
-      if (currentIndex < photoList.size()){
-        return true;
-      }
-      else {return false;}
-    }
+    public boolean hasNext(){ return currentIndex < photoList.size() ? true : false; }
 
     @Override
     public Photo next() {
