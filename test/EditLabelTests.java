@@ -1,7 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 import photoarchives.PhotoLabel;
-import photoarchives.PhotoLabelInterface;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

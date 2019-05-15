@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhotoDetails {
-  private List<PhotoLabelInterface> labels;
+  private List<PhotoLabel> labels;
 
 
 
