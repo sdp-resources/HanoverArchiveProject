@@ -33,8 +33,6 @@ public class PhotoArchive {
     this.photos.addPhoto(newPhoto);
     String uniqueID = createUniqueIdForUploadedPhoto();
     newPhoto.setID(uniqueID);
-
-    System.out.println(newPhoto.getSource());
     try {
       BufferedImage image;
       image = ImageIO.read(new File(newPhoto.getSource()));

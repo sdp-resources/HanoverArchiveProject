@@ -14,27 +14,24 @@ public class PhotoArchiveTest {
   private PhotoList photos;
   PhotoArchive photoArchive;
   private Photo blankPhoto;
-  PhotoUploader photoUploader;
 
   @Before
   public void createPhotoArchive() {
     blankPhoto = new Photo();
     photos = new PhotoList();
-    String archiveDir = "/home/helmersj20/testPictures/";
-//    String archiveDir = "/tmp/" + UUID.randomUUID().toString();
+    String archiveDir = "/tmp/" + UUID.randomUUID().toString();
     photoArchive = new PhotoArchive("dog", archiveDir);
-    photoUploader = new PhotoUploader();
   }
 
-//  @After
-//  public void teardownArchive() {
-//    photoArchive.clear();
-//    File archiveDir = new File(photoArchive.getDirectory());
-//    if (archiveDir.exists())
-//    {
-//      archiveDir.delete();
-//    }
-//  }
+  @After
+  public void teardownArchive() {
+    photoArchive.clear();
+    File archiveDir = new File(photoArchive.getDirectory());
+    if (archiveDir.exists())
+    {
+      archiveDir.delete();
+    }
+  }
 
  @Test
   public void PhotoArchiveKnowsNameTest() {
@@ -47,15 +44,16 @@ public class PhotoArchiveTest {
     assertEquals("cat", photoArchive.getName());
   }
 
-//  @Test
-//  public void addPhotoToPhotoArchivePhotoList() {
-//    photoArchive.addPhotoToArchive(blankPhoto);
-//    System.out.println(photoArchive.getPhotoList().getLength());
-//    assertEquals(1, photoArchive.getPhotoList().getLength());
-//  }
+  @Test
+  public void addPhotoToPhotoArchivePhotoList() {
+    blankPhoto.setSource("testSource");
+    photoArchive.addPhotoToArchive(blankPhoto);
+    System.out.println(photoArchive.getPhotoList().getLength());
+    assertEquals(1, photoArchive.getPhotoList().getLength());
+  }
 
   @Test
-  public void clearAllPhotosfromPhotoArchive(){
+  public void clearAllPhotosFromPhotoArchive(){
     Photo p1 = new Photo("test source1" );
     Photo p2 = new Photo("test source2") ;
     Photo p3 = new Photo("test source3");
@@ -64,14 +62,6 @@ public class PhotoArchiveTest {
     photos.addPhoto(p3);
     photoArchive.clear();
     assertEquals(0, photoArchive.getPhotoList().getLength());
-  }
-
-  @Test
-  public void canSetIds(){
-    Photo p1 = new Photo("test source1");
-    photoArchive.addPhotoToArchive(p1);
-    // Incorrect test
-    //assertTrue("cat", p1.getID());
   }
 
   @Test
