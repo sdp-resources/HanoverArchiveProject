@@ -9,9 +9,9 @@ public class LabelSetTest {
 
   private LabelSet labels;
 
-  PhotoLabel label1 = new PhotoLabel("year", "1991");
-  PhotoLabel label2 = new PhotoLabel("year", "1997");
-  PhotoLabel label3 = new PhotoLabel("year", "1990");
+  PhotoLabel label1 = new PhotoLabel(PhotoLabel.Kind.DATE, "1991");
+  PhotoLabel label2 = new PhotoLabel(PhotoLabel.Kind.DATE, "1997");
+  PhotoLabel label3 = new PhotoLabel(PhotoLabel.Kind.DATE, "1990");
 
   @Before
   public void setUp() throws Exception {
