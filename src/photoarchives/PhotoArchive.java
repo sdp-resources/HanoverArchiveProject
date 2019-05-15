@@ -44,7 +44,7 @@ public class PhotoArchive {
 
   public void initialize() {
     File theDir = new File(directory);
-    if(!theDir.exists())
+    if (!theDir.exists())
     {
       theDir.mkdir();
     }
