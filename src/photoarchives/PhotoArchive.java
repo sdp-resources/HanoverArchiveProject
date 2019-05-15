@@ -30,7 +30,7 @@ public class PhotoArchive {
 
   public void addPhotoToArchive(Photo newPhoto) {
     this.photos.addPhoto(newPhoto);
-    String uniqueID = UUID.randomUUID().toString();
+    String uniqueID = createUniqueIdForUploadedPhoto();
     newPhoto.setID(uniqueID);
   }
 
@@ -43,12 +43,14 @@ public class PhotoArchive {
   }
 
   public void initialize() {
-    File theDir = new File(directory);
-    if (!theDir.exists())
+    File theDirectory = new File(directory);
+    if (!theDirectory.exists())
     {
-      theDir.mkdir();
+      theDirectory.mkdir();
     }
   }
 
-
+  private String createUniqueIdForUploadedPhoto() {
+    return UUID.randomUUID().toString();
+  }
 }
