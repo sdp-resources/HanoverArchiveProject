@@ -34,4 +34,8 @@ public class Photo {
   public LabelSet getLabels() {
     return labels;
   }
+
+  public void addLabel(PhotoLabel.Kind kind, String value) {
+    labels.add(new PhotoLabel(kind, value));
+  }
 }

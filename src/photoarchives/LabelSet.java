@@ -24,7 +24,7 @@ public class LabelSet {
     return labels.contains(label);
   }
 
-  public PhotoLabel getLabel(PhotoLabel label1) {
-    return label1;
-  }
+  //public PhotoLabel getLabel(PhotoLabel.Kind kind) {
+    //return ;
+  //}
 }

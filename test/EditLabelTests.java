@@ -14,6 +14,7 @@ public class EditLabelTests {
   public void setUp() {
     label = new PhotoLabel();
   }
+
   @Test
   public void holdsCorrectData() {
     assertThat(label.getValue(), is(""));
