@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 import photoarchives.Photo;
 import photoarchives.PhotoArchive;
@@ -13,7 +14,7 @@ public class PhotoArchiveTest {
   PhotoArchive photoArchive = new PhotoArchive("dog", "");
   private Photo blankPhoto;
 
-  @Setup
+  @Before
   public void createInitialArchive() {
     blankPhoto = new Photo();
     photos = new PhotoList();

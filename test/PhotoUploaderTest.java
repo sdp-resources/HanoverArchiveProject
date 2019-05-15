@@ -9,7 +9,7 @@ public class PhotoUploaderTest {
   private PhotoUploader photoUploader;
 
   @Test
-  private void testUploadPhoto() {
+  public void testUploadPhoto() {
     Photo uploadedPhoto = photoUploader.uploadPhoto("testSource");
     photo = new Photo("testSource");
     assertEquals(photo, uploadedPhoto);
