@@ -3,10 +3,12 @@ package photoarchives;
 public class Photo {
   private String source;
   private String id;
+  private LabelSet labels;
 
   public Photo() {
     this.source = null;
     this.id = null;
+    this.labels = new LabelSet();
   }
 
   public Photo(String source) {
@@ -28,4 +30,8 @@ public class Photo {
   }
 
   public void setID(String newID) { this.id = newID; }
+
+  public LabelSet getLabels() {
+    return labels;
+  }
 }

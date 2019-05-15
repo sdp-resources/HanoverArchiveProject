@@ -19,6 +19,7 @@ public class PhotoTest {
     Photo p1 = new Photo();
     assertEquals(null, p1.getSource());
     assertEquals(null, p1.getID());
+    assertEquals(0, p1.getLabels().size());
   }
 
   @Test
