@@ -1,19 +1,22 @@
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import photoarchives.Photo;
 import photoarchives.PhotoList;
 
+import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertFalse;
 
 public class PhotoListTests {
-  PhotoList photoList = new PhotoList();
-  Photo photo = new Photo("test source");
+  private PhotoList photoList;
+  private Photo photo;
 
-  @Test
-  public void hasPhotos() {
-    assertEquals(photoList.getLength(), 0);
+  @Before
+  public void setUp() {
+    photoList = new PhotoList();
+    photo = new Photo("test source");
   }
 
   @Test
@@ -38,20 +41,27 @@ public class PhotoListTests {
   }
 
   @Test
-  public void addThreePhotos(){
+  public void whenAddingThreePhotos_LengthUpdates(){
     addThreePhotosToList();
     assertEquals(photoList.getLength(),3);
   }
 
 
-
-  //public void getNextPhoto(){
-    //addThreePhotos();
-    //Photo p1 = photoList.next();
-    //assertEquals("test source2",p1.getSource());
-  //}
+  @Test
+  public void whenListIsEmpty_hasNextIsFalse(){
+    PhotoList photoList = new PhotoList();
+    Iterator<Photo> iter = photoList.iterator();
+    assertFalse(iter.hasNext());
+  }
 
   @Test
+  public void whenNextIsCalled_ReturnNextPhoto() {
+    addThreePhotosToList();
+    Iterator<Photo> iter = photoList.iterator();
+    Photo test = iter.next();
+    assertEquals(test.getSource(), "test source1");
+  }
+
   public void addThreePhotosToList() {
     Photo p1 = new Photo("test source1" );
     Photo p2 = new Photo("test source2") ;
