@@ -20,14 +20,14 @@ public class PhotoListTests {
   }
 
   @Test
-  public void addOnePhoto(){
+  public void addOnePhoto_ExpectLengthToBeOne(){
     photoList.addPhoto(photo);
     assertEquals(photoList.getLength(), 1);
 
   }
 
   @Test
-  public void removePhoto(){
+  public void removeOnePhoto_ExpectLengthToBeZero(){
     photoList.addPhoto(photo);
     photoList.removePhoto(photo);
     assertEquals(photoList.getLength(), 0);
@@ -59,7 +59,16 @@ public class PhotoListTests {
     addThreePhotosToList();
     Iterator<Photo> iter = photoList.iterator();
     Photo test = iter.next();
-    assertEquals(test.getSource(), "test source1");
+    assertEquals("test source1", test.getSource());
+  }
+
+  @Test
+  public void callNextTwice_ExpectSecondItemInList() {
+    addThreePhotosToList();
+    Iterator<Photo> iter = photoList.iterator();
+    Photo first = iter.next();
+    Photo second = iter.next();
+    assertEquals("test source2", second.getSource());
   }
 
   public void addThreePhotosToList() {

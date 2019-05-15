@@ -4,25 +4,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class PhotoList {
-  ArrayList<Photo> photoList = new ArrayList<Photo>();
+  private ArrayList<Photo> photoList;
 
-  public  Iterator<Photo> iterator(){
-    return new PhotoListIterator();
-  }
+  public PhotoList() { photoList = new ArrayList<Photo>(); }
 
-  public int getLength() {
-    return photoList.size();
-  }
+  public int getLength() { return photoList.size(); }
 
-  public void addPhoto(Photo photo) {
-    photoList.add(photo);
-  }
+  public void addPhoto(Photo photo) { photoList.add(photo); }
 
-  public void removePhoto(Photo photo) {
-    photoList.remove(photo);
-  }
+  public void removePhoto(Photo photo) { photoList.remove(photo); }
 
   public void clear() { photoList.clear(); }
+
+  public  Iterator<Photo> iterator() {return new PhotoListIterator(); }
 
   public class PhotoListIterator implements Iterator<Photo> {
     private int currentIndex;
