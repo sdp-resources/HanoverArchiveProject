@@ -18,7 +18,7 @@ public class PhotoArchiveTest {
   public void createPhotoArchive() {
     blankPhoto = new Photo();
     photos = new PhotoList();
-    String archiveDirectory = "/home/walkert20/CS321/HanoverArchiveProject/assets/SampleArchive/";
+    String archiveDirectory = "/tmp/";
     photoArchive = new PhotoArchive("archiveName", archiveDirectory);
   }
 
