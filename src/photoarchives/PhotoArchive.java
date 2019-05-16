@@ -8,23 +8,19 @@ import java.util.UUID;
 public class PhotoArchive {
   private String name;
   private PhotoList photos;
-  private String directory;
+  private File archive;
 
   public PhotoArchive(String name, String directory){
     this.name = name;
     this.photos = new PhotoList();
-    this.directory = directory;
+    archive = new File(directory);
   }
 
-  public String getName() {
-    return this.name;
-  }
+  public String getName() { return name; }
 
-  public PhotoList getPhotoList() {
-    return this.photos;
-  }
+  public PhotoList getPhotoList() { return photos; }
 
-  public String getDirectory() { return this.directory; }
+  public String getArchivePath() { return archive.getPath(); }
 
   public void setName(String newName) {
     this.name = newName;
@@ -32,18 +28,22 @@ public class PhotoArchive {
 
   public void addPhotoToArchive(Photo newPhoto) {
     this.photos.addPhoto(newPhoto);
-    String uniqueID = createUniqueIdForUploadedPhoto();
-    newPhoto.setID(uniqueID);
-    writePhotoToArchiveDirectory(newPhoto, uniqueID);
+    newPhoto.setID(createUniqueIdForUploadedPhoto());
+    try {
+      BufferedImage image = loadImageFromSource(newPhoto);
+      newPhoto.setImageLocation(archive.getPath());
+      File imageInArchvie = new File(newPhoto.getImageLocation());
+      ImageIO.write(image, "jpeg", imageInArchvie);
+    } catch (IOException e) {
+    }
   }
 
   public void clear() { this.photos.clear(); }
 
   public void initialize() {
-    File theDirectory = new File(directory);
-    if (!theDirectory.exists())
+    if (!archive.exists())
     {
-      theDirectory.mkdir();
+      archive.mkdir();
     }
   }
 
@@ -51,20 +51,11 @@ public class PhotoArchive {
     return UUID.randomUUID().toString();
   }
 
-  private void writePhotoToArchiveDirectory(Photo newPhoto, String uniqueID) {
-    try {
-      BufferedImage image = readImageObjectFromNewPhoto(newPhoto);
-      File targetFile = createTargetFile(uniqueID);
-      ImageIO.write(image, "jpeg", targetFile);
-    } catch (IOException e) {
-    }
+  private BufferedImage loadImageFromSource(Photo newPhoto) throws IOException {
+    return ImageIO.read(new File(newPhoto.getUploadedFrom()));
   }
 
-  private BufferedImage readImageObjectFromNewPhoto(Photo newPhoto) throws IOException {
-    return ImageIO.read(new File(newPhoto.getSource()));
-  }
-
-  private File createTargetFile(String uniqueID) {
-    return new File(directory + uniqueID);
+  public int getSize() {
+    return getPhotoList().getLength();
   }
 }

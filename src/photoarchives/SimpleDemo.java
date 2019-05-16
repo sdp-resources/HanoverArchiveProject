@@ -15,7 +15,7 @@ public class SimpleDemo  {
 
   public void runDemo() {
     Photo demoPhoto = new Photo("demoPhoto");
-    demoPhoto.setSource("images/demoImage.jpg");
+    demoPhoto.setUploadedFrom("images/demoImage.jpg");
     photoArchive.addPhotoToArchive(demoPhoto);
     System.out.println("Our Archive has " + photoArchive.getPhotoList().getLength() + " photo!");
 

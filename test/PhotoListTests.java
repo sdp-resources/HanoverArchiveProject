@@ -1,5 +1,4 @@
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import photoarchives.Photo;
 import photoarchives.PhotoList;
@@ -66,7 +65,7 @@ public class PhotoListTests {
     addThreePhotosToList();
     Iterator<Photo> iter = photoList.iterator();
     Photo test = iter.next();
-    assertEquals("test source1", test.getSource());
+    assertEquals("test source1", test.getUploadedFrom());
   }
 
   @Test
@@ -75,7 +74,7 @@ public class PhotoListTests {
     Iterator<Photo> iter = photoList.iterator();
     Photo first = iter.next();
     Photo second = iter.next();
-    assertEquals("test source2", second.getSource());
+    assertEquals("test source2", second.getUploadedFrom());
   }
 
   public void addThreePhotosToList() {

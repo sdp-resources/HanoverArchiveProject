@@ -25,7 +25,7 @@ public class PhotoArchiveTest {
   @After
   public void teardownArchive() {
     photoArchive.clear();
-    File archiveDirectory = new File(photoArchive.getDirectory());
+    File archiveDirectory = new File(photoArchive.getArchivePath());
     if (archiveDirectory.exists())
     {
       archiveDirectory.delete();
@@ -45,7 +45,7 @@ public class PhotoArchiveTest {
 
   @Test
   public void addPhotoToPhotoArchivePhotoList() {
-    blankPhoto.setSource("testSource");
+    blankPhoto.setUploadedFrom("testSource");
     photoArchive.addPhotoToArchive(blankPhoto);
     assertEquals(1, photoArchive.getPhotoList().getLength());
   }
@@ -65,15 +65,21 @@ public class PhotoArchiveTest {
   @Test
   public void whenInitialized_photoArchiveDirectoryIsCreated() {
     photoArchive.initialize();
-    File archiveDir = new File(photoArchive.getDirectory());
+    File archiveDir = new File(photoArchive.getArchivePath());
     assertTrue(archiveDir.exists());
   }
 
   @Test
+  public void whenFirstCreated_PhotoArchiveIsEmpty(){
+    photoArchive.initialize();
+    assertEquals(0, photoArchive.getSize());
+  }
+  @Test
   public void testingUploadPhoto() {
-    String imageLocation = "/home/helmersj20/cs321/HanoverArchiveProject/SampleArchive/Images";
-    Photo examplePhoto = new Photo(imageLocation + "/download.jpeg");
+    String imageLocation = "images/demoImage.jpg";
+    Photo examplePhoto = new Photo(imageLocation);
     photoArchive.addPhotoToArchive(examplePhoto);
   }
+
 }
 
