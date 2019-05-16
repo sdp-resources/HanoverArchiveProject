@@ -50,5 +50,6 @@ public class PhotoLabel {
     Kind(String kind) { this.name = kind; }
 
     public String getName() { return name; }
+
   }
 }

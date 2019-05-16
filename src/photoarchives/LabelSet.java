@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class LabelSet {
+public class LabelSet implements Iterable<PhotoLabel>{
   private Set<PhotoLabel> labels = new HashSet<>();
 
   public boolean isEmpty() {

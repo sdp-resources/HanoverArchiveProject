@@ -3,10 +3,11 @@ package photoarchives;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PhotoList {
+public class PhotoList implements Iterable<Photo>{
   private ArrayList<Photo> photoList;
 
-  public PhotoList() { photoList = new ArrayList<Photo>(); }
+  public PhotoList() { photoList = new ArrayList<Photo>();
+  }
 
   public int getLength() { return photoList.size(); }
 
@@ -16,7 +17,12 @@ public class PhotoList {
 
   public void clear() { photoList.clear(); }
 
-  public  Iterator<Photo> iterator() {return new PhotoListIterator(); }
+  public  Iterator<Photo> PhotoListIterator;
+
+  public Iterator<Photo> iterator() {
+    PhotoListIterator = photoList.iterator();
+    return PhotoListIterator;
+  }
 
   public class PhotoListIterator implements Iterator<Photo> {
     private int currentIndex;

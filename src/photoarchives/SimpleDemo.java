@@ -18,15 +18,19 @@ public class SimpleDemo  {
     demoPhoto.setUploadedFrom("images/demoImage.jpg");
     photoArchive.addPhotoToArchive(demoPhoto);
     System.out.println("Our Archive has " + photoArchive.getPhotoList().getLength() + " photo!");
-
+    printLabels(demoPhoto);
     // Keep demo running so archive files can be checked (ugly comment)
     waitForEnter();
   }
 
   public void printLabels(Photo photo){
     photo.addLabel(PhotoLabel.Kind.LOCATION, "Hanover");
-    //PhotoLabel label = photo.getLabels().getLabel("");
-    //System.out.println(label.getKind() + ": " + label.getValue());
+    photo.addLabel(PhotoLabel.Kind.TITLE, "Title");
+    photo.addLabel(PhotoLabel.Kind.SUBJECT, "Sports");
+    for (PhotoLabel label : photo.getLabels()) {
+      System.out.println(label.getKind() + ": " + label.getValue());
+    }
+
   }
 
   private void waitForEnter() {
