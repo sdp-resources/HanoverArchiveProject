@@ -16,7 +16,6 @@ public class Photo {
     this.id = null;
   }
 
-
   public String getSource() {
     return this.source;
   }
