@@ -18,13 +18,38 @@ public class LabelSet {
     return labels.size();
   }
 
-  public void remove(PhotoLabel label) { labels.remove(label); }
-
-  public boolean contains(PhotoLabel label) {
-    return labels.contains(label);
+  public void remove(PhotoLabel.Kind kind) {
+    for(PhotoLabel label : labels) {
+      if(label.getKind() == kind) {
+        labels.remove(label);
+        break;
+      }
+    }
   }
 
-  //public PhotoLabel getLabel(PhotoLabel.Kind kind) {
-    //return ;
-  //}
+  public boolean contains(PhotoLabel.Kind kind) {
+    for(PhotoLabel label : labels) {
+      if(label.getKind() == kind) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public String getLabelValue(PhotoLabel.Kind kind) {
+    for (PhotoLabel label : labels) {
+      if (label.getKind() == kind) {
+        return label.getValue();
+      }
+    }
+    return "NO LABEL OF KIND " + kind;
+  }
+
+  public void setLabelValue(PhotoLabel.Kind kind, String newValue) {
+    for (PhotoLabel label : labels) {
+      if (label.getKind() == kind) {
+        label.setValue(newValue);
+      }
+    }
+  }
 }

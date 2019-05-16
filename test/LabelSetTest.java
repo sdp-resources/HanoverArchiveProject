@@ -17,8 +17,8 @@ public class LabelSetTest {
   public void setUp() throws Exception {
     labels = new LabelSet();
     label1 = new PhotoLabel(PhotoLabel.Kind.DATE, "1991");
-    label2 = new PhotoLabel(PhotoLabel.Kind.DATE, "1997");
-    label3 = new PhotoLabel(PhotoLabel.Kind.DATE, "1990");
+    label2 = new PhotoLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
+    label3 = new PhotoLabel(PhotoLabel.Kind.SUBJECT, "CS");
   }
 
   @Test
@@ -58,42 +58,81 @@ public class LabelSetTest {
   @Test
   public void checkThatLabelRemoveWorksWithOneLabel() {
     labels.add(label1);
-    labels.remove(label1);
+    labels.remove(PhotoLabel.Kind.DATE);
     assertTrue(labels.isEmpty());
   }
 
   @Test
   public void checkThatLabelRemoveWorksWithThreeLabels() {
     addThreeLabelsToSet();
-    labels.remove(label1); labels.remove(label2); labels.remove(label3);
+    labels.remove(PhotoLabel.Kind.DATE); labels.remove(PhotoLabel.Kind.DESCRIPTION); labels.remove(PhotoLabel.Kind.SUBJECT);
     assertTrue(labels.isEmpty());
   }
 
   @Test
   public void checkRemovingLabelFromMiddleOfSet() {
     addThreeLabelsToSet();
-    labels.remove(label2);
+    labels.remove(PhotoLabel.Kind.DESCRIPTION);
     assertTrue(labels.size() == 2);
   }
 
   @Test
   public void checkRemovingLabelFromEndOfSet() {
     addThreeLabelsToSet();
-    labels.remove(label3);
+    labels.remove(PhotoLabel.Kind.SUBJECT);
     assertTrue(labels.size() == 2);
   }
 
   @Test
-  public void checkForSpecificLabelInSet() {
+  public void checkForSecondLabelInSetReturnsTrue() {
     labels.add(label1); labels.add(label2);
-    assertTrue(labels.contains(label2));
+    assertTrue(labels.contains(PhotoLabel.Kind.DESCRIPTION));
   }
 
   @Test
-  public void checkThatGetLabelWorks() {
-    labels.add(label1);
-    //assertEquals(labels.getLabel(label1), label1);
+  public void checkForFirstLabelInSetReturnsTrue() {
+    labels.add(label1); labels.add(label2);
+    assertTrue(labels.contains(PhotoLabel.Kind.DATE));
   }
+
+  @Test
+  public void checkForSpecificLabelInSetReturnsFalse() {
+    labels.add(label1); labels.add(label2);
+    assertFalse(labels.contains(PhotoLabel.Kind.SUBJECT));
+  }
+
+  @Test
+  public void getLabelValueOneLabelInSet() {
+    labels.add(label1);
+    assertEquals("1991", labels.getLabelValue(PhotoLabel.Kind.DATE));
+  }
+
+  @Test
+  public void getLabelValueThreeLabelsInSet() {
+    addThreeLabelsToSet();
+    assertEquals("Test Description", labels.getLabelValue(PhotoLabel.Kind.DESCRIPTION));
+  }
+
+  @Test
+  public void getLabelValueLabelSetDoesntContainLabelKind() {
+    addThreeLabelsToSet();
+    assertEquals("NO LABEL OF KIND TITLE", labels.getLabelValue(PhotoLabel.Kind.TITLE));
+  }
+
+  @Test
+  public void setLabelValueExpectLabelValueToChange() {
+    labels.add(label1);
+    labels.setLabelValue(PhotoLabel.Kind.DATE, "2000");
+    assertEquals("2000", labels.getLabelValue(PhotoLabel.Kind.DATE));
+  }
+
+  @Test
+  public void setLabelValueThreeLabelsChangeValueOfMiddle() {
+    addThreeLabelsToSet();
+    labels.setLabelValue(PhotoLabel.Kind.DESCRIPTION, "New Description");
+    assertEquals("New Description", labels.getLabelValue(PhotoLabel.Kind.DESCRIPTION));
+  }
+
 
   private void addThreeLabelsToSet() {
     labels.add(label1);
