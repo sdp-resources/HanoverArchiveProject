@@ -51,4 +51,16 @@ public class Photo {
   public String getImageLocation() {
     return imageLocation;
   }
+
+  public String getLabelValue(PhotoLabel.Kind kind) {
+    return labels.getLabelValue(kind);
+  }
+
+  public void setLabelValue(PhotoLabel.Kind kind, String newvalue) {
+    labels.setLabelValue(kind, newvalue);
+  }
+
+  public boolean hasLabel(PhotoLabel.Kind kind) {
+    return labels.contains(kind);
+  }
 }

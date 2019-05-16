@@ -1,9 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 import photoarchives.Photo;
+import photoarchives.PhotoLabel;
 
-
-import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.*;
 
 public class PhotoTest {
   private Photo photo;
@@ -42,5 +42,52 @@ public class PhotoTest {
     assertEquals(testID, photo.getID());
   }
 
+  @Test
+  public void getLabelValue_ReturnsCorrectValue() {
+    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
+    assertEquals("1991", photo.getLabelValue(PhotoLabel.Kind.DATE));
+  }
+
+  @Test
+  public void getLabelValue_ReturnsCorrectValueForMultipleLabels() {
+    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
+    photo.addLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
+    photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
+    assertEquals("Test Description", photo.getLabelValue(PhotoLabel.Kind.DESCRIPTION));
+    assertEquals("CS", photo.getLabelValue(PhotoLabel.Kind.SUBJECT));
+    assertEquals("1991", photo.getLabelValue(PhotoLabel.Kind.DATE));
+  }
+
+  @Test
+  public void setLabelValue_ChangeDateLabel() {
+    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
+    photo.setLabelValue(PhotoLabel.Kind.DATE, "2000");
+    assertEquals("2000", photo.getLabelValue(PhotoLabel.Kind.DATE));
+  }
+
+  @Test
+  public void setLabelValue_ChangeLabelFromSetOfThree() {
+    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
+    photo.addLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
+    photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
+    photo.setLabelValue(PhotoLabel.Kind.DESCRIPTION, "New Description");
+    assertEquals("New Description", photo.getLabelValue(PhotoLabel.Kind.DESCRIPTION));
+  }
+
+  @Test
+  public void hasLabel_ReturnsTrueFromSetOfThree() {
+    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
+    photo.addLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
+    photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
+    assertTrue(photo.hasLabel(PhotoLabel.Kind.DESCRIPTION));
+  }
+
+  @Test
+  public void hasLabel_ReturnsFalseFromSetOfThree() {
+    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
+    photo.addLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
+    photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
+    assertFalse(photo.hasLabel(PhotoLabel.Kind.TITLE));
+  }
 
 }
