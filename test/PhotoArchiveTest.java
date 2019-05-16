@@ -6,8 +6,7 @@ import photoarchives.*;
 import java.io.File;
 import java.util.UUID;
 
-import static junit.framework.Assert.assertTrue;
-
+import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
 public class PhotoArchiveTest {
