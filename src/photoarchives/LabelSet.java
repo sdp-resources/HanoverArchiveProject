@@ -1,6 +1,7 @@
 package photoarchives;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class LabelSet {
@@ -51,5 +52,9 @@ public class LabelSet {
         label.setValue(newValue);
       }
     }
+  }
+
+  public Iterator<PhotoLabel> iterator() {
+    return labels.iterator();
   }
 }

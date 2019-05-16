@@ -3,6 +3,8 @@ import org.junit.Test;
 import photoarchives.LabelSet;
 import photoarchives.PhotoLabel;
 
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 public class LabelSetTest {
@@ -133,6 +135,28 @@ public class LabelSetTest {
     assertEquals("New Description", labels.getLabelValue(PhotoLabel.Kind.DESCRIPTION));
   }
 
+  @Test
+  public void iteratorIteratesThroughSetOfOne() {
+    int acc = 0;
+    labels.add(label1);
+    Iterator<PhotoLabel> itr = labels.iterator();
+    while(itr.hasNext()) {
+      acc++;
+      itr.next();
+    }
+    assertEquals(1, acc);
+  }
+  @Test
+  public void iteratorIteratesThroughSetOfThree() {
+    int acc = 0;
+    addThreeLabelsToSet();
+    Iterator<PhotoLabel> itr = labels.iterator();
+    while(itr.hasNext()) {
+      acc++;
+      itr.next();
+    }
+    assertEquals(3, acc);
+  }
 
   private void addThreeLabelsToSet() {
     labels.add(label1);
