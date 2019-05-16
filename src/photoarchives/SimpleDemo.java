@@ -20,7 +20,8 @@ public class SimpleDemo  {
     System.out.println("Our Archive has " + photoArchive.getPhotoList().getLength() + " photo!");
     printLabels(demoPhoto);
     // Keep demo running so archive files can be checked (ugly comment)
-    waitForEnter();
+    //waitForEnter();
+    addPhoto();
   }
 
   public void printLabels(Photo photo){
@@ -38,6 +39,16 @@ public class SimpleDemo  {
     System.out.println("<enter> when finished");
     while (scanner.hasNextLine()) {
 
+    }
+  }
+
+  public void addPhoto(){
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Next Photo: ");
+    String photoLocation = scanner.next();
+    while(!(photoLocation.equals("no"))){
+      System.out.print("Next Photo: ");
+      photoLocation = scanner.next();
     }
   }
 
