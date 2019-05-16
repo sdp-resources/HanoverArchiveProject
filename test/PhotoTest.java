@@ -17,22 +17,22 @@ public class PhotoTest {
   @Test
   public void createDefaultImage() {
     Photo p1 = new Photo();
-    assertEquals(null, p1.getSource());
+    assertEquals(null, p1.getUploadedFrom());
     assertEquals(null, p1.getID());
     assertEquals(0, p1.getLabels().size());
   }
 
   @Test
   public void createImageWithGivenSource() {
-    assertEquals("source", photo.getSource());
+    assertEquals("source", photo.getUploadedFrom());
     assertEquals(null, photo.getID());
   }
 
 
   @Test
   public void setNewSource_ExpectChange() {
-   photo.setSource("/usr...");
-   assertEquals("/usr...", photo.getSource());
+   photo.setUploadedFrom("/usr...");
+   assertEquals("/usr...", photo.getUploadedFrom());
   }
 
   @Test
