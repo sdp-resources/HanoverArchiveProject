@@ -18,7 +18,7 @@ public class PhotoArchiveTest {
   public void createPhotoArchive() {
     blankPhoto = new Photo();
     photos = new PhotoList();
-    String archiveDirectory = "/tmp/" + UUID.randomUUID().toString();
+    String archiveDirectory = "/home/walkert20/CS321/HanoverArchiveProject/assets/SampleArchive/";
     photoArchive = new PhotoArchive("archiveName", archiveDirectory);
   }
 
@@ -52,14 +52,18 @@ public class PhotoArchiveTest {
 
   @Test
   public void clearAllPhotosFromPhotoArchive(){
+    createStockPhotos();
+    photoArchive.clear();
+    assertEquals(0, photoArchive.getPhotoList().getLength());
+  }
+
+  private void createStockPhotos() {
     Photo photo1 = new Photo("test source1" );
     Photo photo2 = new Photo("test source2") ;
     Photo photo3 = new Photo("test source3");
     photos.addPhoto(photo1);
     photos.addPhoto(photo2);
     photos.addPhoto(photo3);
-    photoArchive.clear();
-    assertEquals(0, photoArchive.getPhotoList().getLength());
   }
 
   @Test
@@ -76,9 +80,10 @@ public class PhotoArchiveTest {
   }
   @Test
   public void testingUploadPhoto() {
-    String imageLocation = "images/demoImage.jpg";
+    String imageLocation = "/home/walkert20/CS321/HanoverArchiveProject/assets/images/demoImage.jpg";
     Photo examplePhoto = new Photo(imageLocation);
     photoArchive.addPhotoToArchive(examplePhoto);
+    assertEquals(1, photoArchive.getSize());
   }
 
 }
