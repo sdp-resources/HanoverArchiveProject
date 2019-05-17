@@ -28,6 +28,20 @@ public class PhotoListTests {
   }
 
   @Test
+  public void getFirstPhoto_ListOfLengthOne() {
+    photoList.addPhoto(photo);
+    Photo photo = photoList.get(0);
+    assertEquals("test source", photo.getUploadedFrom());
+  }
+
+  @Test
+  public void getSecondPhoto_ListOfLengthThree() {
+    addThreePhotosToList();
+    Photo photo = photoList.get(1);
+    assertEquals("test source2", photo.getUploadedFrom());
+  }
+
+  @Test
   public void removeOnePhoto_ExpectLengthToBeZero(){
     photoList.addPhoto(photo);
     photoList.removePhoto(photo);
@@ -103,7 +117,7 @@ public class PhotoListTests {
     assertEquals(0, test.getLength());
   }
 
-  public void addThreePhotosToList() {
+  private void addThreePhotosToList() {
     Photo p1 = new Photo("test source1" );
     p1.setID("First");
     Photo p2 = new Photo("test source2") ;

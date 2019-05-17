@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class PhotoList implements Iterable<Photo>{
   private ArrayList<Photo> photoList;
-  public  Iterator<Photo> PhotoListIterator;
+  private  Iterator<Photo> PhotoListIterator;
 
   public PhotoList() {
     photoList = new ArrayList<>();
