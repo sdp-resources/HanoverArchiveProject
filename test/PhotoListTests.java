@@ -79,14 +79,13 @@ public class PhotoListTests {
   }
 
   @Test
-  public void searchForDate_Value1991_ListOfSizeOne() {
+  public void searchForDate_Value1991_ListOfSizeOne_ExpectOneInFinalList() {
     photo.addLabel(PhotoLabel.Kind.DATE, "1991");
     photoList.addPhoto(photo);
     PhotoList test = photoList.search(PhotoLabel.Kind.DATE, "1991");
     assertEquals(1, test.getLength());
     assertEquals("1991", test.get(0).getLabelValue(PhotoLabel.Kind.DATE));
   }
-
 
   @Test
   public void searchForDate_Value1991_ListOfSizeThree_ExpectTwoInFinalList() {
@@ -95,6 +94,13 @@ public class PhotoListTests {
     assertEquals(2, test.getLength());
     assertEquals("1991", test.get(0).getLabelValue(PhotoLabel.Kind.DATE));
     assertEquals("1991", test.get(1).getLabelValue(PhotoLabel.Kind.DATE));
+  }
+
+  @Test
+  public void searchForDate_Value1991_ListOfSizeThree_NoSuchLabelValue() {
+    addThreePhotosToList();
+    PhotoList test = photoList.search(PhotoLabel.Kind.DATE, "2020");
+    assertEquals(0, test.getLength());
   }
 
   public void addThreePhotosToList() {

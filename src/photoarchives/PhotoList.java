@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 public class PhotoList implements Iterable<Photo>{
   private ArrayList<Photo> photoList;
+  public  Iterator<Photo> PhotoListIterator;
 
   public PhotoList() { photoList = new ArrayList<Photo>();
   }
@@ -18,13 +19,6 @@ public class PhotoList implements Iterable<Photo>{
   public void clear() { photoList.clear(); }
 
   public Photo get(int i) { return photoList.get(i); }
-
-  public  Iterator<Photo> PhotoListIterator;
-
-  public Iterator<Photo> iterator() {
-    PhotoListIterator = photoList.iterator();
-    return PhotoListIterator;
-  }
 
   public PhotoList search(PhotoLabel.Kind kind, String value) {
     PhotoList searchedList = new PhotoList();
@@ -45,6 +39,11 @@ public class PhotoList implements Iterable<Photo>{
     return searchedList;
   }
 
+  public Iterator<Photo> iterator() {
+    PhotoListIterator = photoList.iterator();
+    return PhotoListIterator;
+  }
+
   public class PhotoListIterator implements Iterator<Photo> {
     private int currentIndex;
 
@@ -53,7 +52,7 @@ public class PhotoList implements Iterable<Photo>{
     }
 
     @Override
-    public boolean hasNext(){ return currentIndex < photoList.size() ? true : false; }
+    public boolean hasNext() { return currentIndex < photoList.size() ? true : false; }
 
     @Override
     public Photo next() {
