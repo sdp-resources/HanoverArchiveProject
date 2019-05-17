@@ -32,8 +32,8 @@ public class PhotoArchive {
     try {
       BufferedImage image = loadImageFromSource(newPhoto);
       newPhoto.setImageLocation(archive.getPath());
-      File imageInArchvie = new File(newPhoto.getImageLocation());
-      ImageIO.write(image, "jpeg", imageInArchvie);
+      File imageInArchive = new File(newPhoto.getImageLocation());
+      ImageIO.write(image, "jpeg", imageInArchive);
     } catch (IOException e) {
     }
   }
