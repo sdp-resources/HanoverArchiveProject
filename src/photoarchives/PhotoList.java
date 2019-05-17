@@ -17,11 +17,32 @@ public class PhotoList implements Iterable<Photo>{
 
   public void clear() { photoList.clear(); }
 
+  public Photo get(int i) { return photoList.get(i); }
+
   public  Iterator<Photo> PhotoListIterator;
 
   public Iterator<Photo> iterator() {
     PhotoListIterator = photoList.iterator();
     return PhotoListIterator;
+  }
+
+  public PhotoList search(PhotoLabel.Kind kind, String value) {
+    PhotoList searchedList = new PhotoList();
+    for (Photo photo : photoList)
+    {
+      if (photo.hasLabel(kind))
+      {
+        if (photo.getLabelValue(kind) == value)
+        {
+          searchedList.addPhoto(photo);
+        }
+      }
+      else
+      {
+        continue;
+      }
+    }
+    return searchedList;
   }
 
   public class PhotoListIterator implements Iterator<Photo> {

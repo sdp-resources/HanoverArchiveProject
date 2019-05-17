@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import photoarchives.Photo;
+import photoarchives.PhotoLabel;
 import photoarchives.PhotoList;
 
 import java.util.Iterator;
@@ -77,6 +78,25 @@ public class PhotoListTests {
     assertEquals("test source2", second.getUploadedFrom());
   }
 
+  @Test
+  public void searchForDate_Value1991_ListOfSizeOne() {
+    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
+    photoList.addPhoto(photo);
+    PhotoList test = photoList.search(PhotoLabel.Kind.DATE, "1991");
+    assertEquals(1, test.getLength());
+    assertEquals("1991", test.get(0).getLabelValue(PhotoLabel.Kind.DATE));
+  }
+
+
+  @Test
+  public void searchForDate_Value1991_ListOfSizeThree_ExpectTwoInFinalList() {
+    addThreePhotosToList();
+    PhotoList test = photoList.search(PhotoLabel.Kind.DATE, "1991");
+    assertEquals(2, test.getLength());
+    assertEquals("1991", test.get(0).getLabelValue(PhotoLabel.Kind.DATE));
+    assertEquals("1991", test.get(1).getLabelValue(PhotoLabel.Kind.DATE));
+  }
+
   public void addThreePhotosToList() {
     Photo p1 = new Photo("test source1" );
     Photo p2 = new Photo("test source2") ;
@@ -84,6 +104,9 @@ public class PhotoListTests {
     photoList.addPhoto(p1);
     photoList.addPhoto(p2);
     photoList.addPhoto(p3);
+    p1.addLabel(PhotoLabel.Kind.DATE, "1991");
+    p2.addLabel(PhotoLabel.Kind.DATE, "1991");
+    p3.addLabel(PhotoLabel.Kind.DATE, "2005");
   }
 
 
