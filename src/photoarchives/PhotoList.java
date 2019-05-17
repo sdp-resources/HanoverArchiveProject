@@ -7,7 +7,13 @@ public class PhotoList implements Iterable<Photo>{
   private ArrayList<Photo> photoList;
   public  Iterator<Photo> PhotoListIterator;
 
-  public PhotoList() { photoList = new ArrayList<Photo>();
+  public PhotoList() {
+    photoList = new ArrayList<>();
+  }
+
+  public Iterator<Photo> iterator() {
+    PhotoListIterator = photoList.iterator();
+    return PhotoListIterator;
   }
 
   public int getLength() { return photoList.size(); }
@@ -39,11 +45,5 @@ public class PhotoList implements Iterable<Photo>{
   private boolean hasMatchingLabelValue(Photo photo, PhotoLabel.Kind kind, String value) {
     return photo.hasLabel(kind) && photo.getLabelValue(kind) == value;
   }
-
-  public Iterator<Photo> iterator() {
-    PhotoListIterator = photoList.iterator();
-    return PhotoListIterator;
-  }
-
 }
 
