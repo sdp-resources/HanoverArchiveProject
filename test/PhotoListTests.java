@@ -105,8 +105,11 @@ public class PhotoListTests {
 
   public void addThreePhotosToList() {
     Photo p1 = new Photo("test source1" );
+    p1.setID("First");
     Photo p2 = new Photo("test source2") ;
+    p2.setID("Second");
     Photo p3 = new Photo("test source3");
+    p3.setID("Third");
     photoList.addPhoto(p1);
     photoList.addPhoto(p2);
     photoList.addPhoto(p3);

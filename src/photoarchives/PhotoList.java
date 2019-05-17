@@ -24,12 +24,9 @@ public class PhotoList implements Iterable<Photo>{
     PhotoList searchedList = new PhotoList();
     for (Photo photo : photoList)
     {
-      if (photo.hasLabel(kind))
+      if (hasMatchingLabelValue(photo, kind, value))
       {
-        if (photo.getLabelValue(kind) == value)
-        {
           searchedList.addPhoto(photo);
-        }
       }
       else
       {
@@ -39,27 +36,14 @@ public class PhotoList implements Iterable<Photo>{
     return searchedList;
   }
 
+  private boolean hasMatchingLabelValue(Photo photo, PhotoLabel.Kind kind, String value) {
+    return photo.hasLabel(kind) && photo.getLabelValue(kind) == value;
+  }
+
   public Iterator<Photo> iterator() {
     PhotoListIterator = photoList.iterator();
     return PhotoListIterator;
   }
 
-  public class PhotoListIterator implements Iterator<Photo> {
-    private int currentIndex;
-
-    public PhotoListIterator(){
-      this.currentIndex = 0;
-    }
-
-    @Override
-    public boolean hasNext() { return currentIndex < photoList.size() ? true : false; }
-
-    @Override
-    public Photo next() {
-      Photo photo = photoList.get(currentIndex);
-      currentIndex++;
-      return photo;
-    }
-  }
 }
 
