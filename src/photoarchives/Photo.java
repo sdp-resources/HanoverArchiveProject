@@ -8,6 +8,7 @@ public class Photo {//implements  Comparable<Photo>{
   private String id;
   private LabelSet labels;
   private String imageLocation;
+  private static String imagePrefix = "image_";
 
   public Photo() {
     this.uploadedFrom = null;
@@ -35,14 +36,14 @@ public class Photo {//implements  Comparable<Photo>{
     this.uploadedFrom = s;
   }
 
-  public void setID(String newID) { this.id = newID; }
+  public void setID(String newID) { this.id = imagePrefix + newID; }
 
   public LabelSet getLabels() {
     return labels;
   }
 
   public void setImageLocation(String archiveLocation) {
-    this.imageLocation = archiveLocation + "/" + "id" + ".jpeg";
+    this.imageLocation = archiveLocation + "/" + id + ".jpeg";
   }
 
   public void addLabel(PhotoLabel.Kind kind, String value) {

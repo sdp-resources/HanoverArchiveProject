@@ -10,7 +10,6 @@ public class PhotoArchive {
   private PhotoList photos;
   private File archive;
   private static String localArchiveDir = "assets/image_archive";
-  private static String imagePrefix = "image_";
 
   public PhotoArchive(String name, String directory){
     this.name = name;

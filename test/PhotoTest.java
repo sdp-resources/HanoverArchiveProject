@@ -3,6 +3,8 @@ import org.junit.Test;
 import photoarchives.Photo;
 import photoarchives.PhotoLabel;
 
+import java.awt.*;
+
 import static junit.framework.TestCase.*;
 
 public class PhotoTest {
@@ -39,7 +41,8 @@ public class PhotoTest {
   public void setNewID_ExpectChange() {
     String testID = "001";
     photo.setID(testID);
-    assertEquals(testID, photo.getID());
+    String photoId = "image_" + testID;
+    assertEquals(photoId, photo.getID());
   }
 
   @Test
