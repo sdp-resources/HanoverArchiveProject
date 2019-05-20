@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import photoarchives.*;
 
@@ -8,6 +9,7 @@ import static org.junit.Assert.assertFalse;
 
 public class SortPhotoListTest {
   PhotoList testPhotoList = new PhotoList();
+  SortedPhotoList sortedPhotoList = new SortedPhotoList();
 
   @Before
   public void setup(){
@@ -15,25 +17,25 @@ public class SortPhotoListTest {
   }
 
   @Test
-  public void canCreateSortedPhotoList(){
-    SortedPhotoList sortedPhotoList = new SortedPhotoList();
-
-
+  public void SortableList(){
+    Photo photo1 = new Photo();
+    photo1.addLabel(PhotoLabel.Kind.TITLE, "title");
+    testPhotoList.addPhoto(photo1);
+    assertTrue(sortedPhotoList.canSortList(testPhotoList));
   }
-
+/*  @Ignore
   @Test
-  public void emptySortedList(){
-    for(Photo testPhoto : testPhotoList) {
-      testPhoto.addLabel(PhotoLabel.Kind.TITLE, "title");
-    }
-
-
-  }
-
-  @Test
-  public void oneItemSortedList(){
-
-  }
+  public void canCompareLabels(){
+    Photo photo1 = new Photo();
+    photo1.addLabel(PhotoLabel.Kind.TITLE, "Celtics trash");
+    Photo photo2 = new Photo();
+    photo1.addLabel(PhotoLabel.Kind.TITLE, "kyrie trash");
+    testPhotoList.addPhoto(photo1);
+    testPhotoList.addPhoto(photo2);
+    assertEquals(photo1.getLabelValue(PhotoLabel.Kind.TITLE),
+                 photo1.getLabelValue(PhotoLabel.Kind.TITLE.compareTo(photo2.getLabelValue(
+                       PhotoLabel.Kind.TITLE))));
+  }*/
 
   @Test
   public void sortedPhotoList(){

@@ -1,7 +1,5 @@
 package photoarchives;
-
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 public class PhotoList implements Iterable<Photo>{
   private ArrayList<Photo> photoList;

@@ -2,7 +2,8 @@ package photoarchives;
 
 import java.io.File;
 
-public class Photo {
+public class Photo {//implements  Comparable<Photo>{
+
   private String uploadedFrom;
   private String id;
   private LabelSet labels;
@@ -63,4 +64,8 @@ public class Photo {
   public boolean hasLabel(PhotoLabel.Kind kind) {
     return labels.contains(kind);
   }
+
+  //public int compareTo(Photo o) {
+    //return this.getLabels().compareTo(o.getLabels());
+  //}
 }
