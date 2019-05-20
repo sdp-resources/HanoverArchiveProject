@@ -8,20 +8,19 @@ import java.util.UUID;
 public class PhotoArchive {
   private String name;
   private PhotoList photos;
-  private File archive;
-  private static String localArchiveDir = "assets/image_archive";
+  private File imagesDirectory;
 
   public PhotoArchive(String name, String directory){
     this.name = name;
     this.photos = new PhotoList();
-    archive = new File(directory);
+    imagesDirectory = new File(directory);
   }
 
   public String getName() { return name; }
 
   public PhotoList getPhotoList() { return photos; }
 
-  public String getArchivePath() { return archive.getPath(); }
+  public String getArchivePath() { return imagesDirectory.getPath(); }
 
   public void setName(String newName) {
     this.name = newName;
@@ -32,7 +31,7 @@ public class PhotoArchive {
     newPhoto.setID(createUniqueIdForUploadedPhoto());
     try {
       BufferedImage image = loadImageFromSource(newPhoto);
-      newPhoto.setImageLocation(archive.getPath());
+      newPhoto.setImageLocation(imagesDirectory.getPath());
       File imageInArchive = new File(newPhoto.getImageLocation());
       ImageIO.write(image, "jpeg", imageInArchive);
     } catch (IOException e) {
@@ -42,9 +41,9 @@ public class PhotoArchive {
   public void clear() { this.photos.clear(); }
 
   public void initialize() {
-    if (!archive.exists())
+    if (!imagesDirectory.exists())
     {
-      archive.mkdir();
+      imagesDirectory.mkdir();
     }
   }
 

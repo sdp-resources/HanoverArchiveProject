@@ -8,7 +8,7 @@ public class SimpleDemo  {
   public PhotoArchive photoArchive;
 
   public SimpleDemo() {
-    archiveDir = "/tmp/simpleArchive" + UUID.randomUUID().toString();
+    archiveDir = "assets/public/image_archive";
     photoArchive = new PhotoArchive("demo", archiveDir);
     photoArchive.initialize();
   }
