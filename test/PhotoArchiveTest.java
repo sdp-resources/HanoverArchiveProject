@@ -86,5 +86,12 @@ public class PhotoArchiveTest {
     assertEquals(1, photoArchive.getSize());
   }
 
+  @Test
+  public void addPhotoToPhotoArchivePhotoList_usingURL() {
+    blankPhoto.setUploadedFrom("https://www.wikihow.com/images/thumb/f/fc/Get-the-URL-for-Pictures-Step-1-Version-6.jpg/aid597183-v4-900px-Get-the-URL-for-Pictures-Step-1-Version-6.jpg");
+    photoArchive.addPhotoToArchive(blankPhoto);
+    assertEquals(1, photoArchive.getPhotoList().getLength());
+  }
+
 }
 

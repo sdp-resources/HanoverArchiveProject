@@ -3,6 +3,7 @@ package photoarchives;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.URL;
 import java.util.UUID;
 
 public class PhotoArchive {
@@ -52,7 +53,7 @@ public class PhotoArchive {
   }
 
   private BufferedImage loadImageFromSource(Photo newPhoto) throws IOException {
-    return ImageIO.read(new File(newPhoto.getUploadedFrom()));
+    return ImageIO.read(new URL(newPhoto.getUploadedFrom()));
   }
 
   public int getSize() {
