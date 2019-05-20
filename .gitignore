@@ -1,6 +1,7 @@
 out/*
 .idea/*
 .attach*
+assets/public/image_archive/image*
 # Compiled class file
 *.class
 
