@@ -1,5 +1,6 @@
 out/*
 .idea/*
+.attach*
 # Compiled class file
 *.class
 
