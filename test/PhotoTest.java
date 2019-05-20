@@ -92,5 +92,36 @@ public class PhotoTest {
     photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
     assertFalse(photo.hasLabel(PhotoLabel.Kind.TITLE));
   }
+  @Test
+  public void canCompareToReturnNegative(){
+    Photo photo2 = new Photo();
+    photo.addLabel(PhotoLabel.Kind.TITLE, "a");
+    photo2.addLabel(PhotoLabel.Kind.TITLE, "b");
+    assertTrue(photo.compareTo(photo2) <0);
+
+  }
+  @Test
+  public void canCompareToReturnPositive(){
+    Photo photo2 = new Photo();
+    photo.addLabel(PhotoLabel.Kind.TITLE, "b");
+    photo2.addLabel(PhotoLabel.Kind.TITLE, "a");
+    assertFalse(photo.compareTo(photo2) <0);
+
+  }
+  @Test
+  public void canCompareToReturnZero(){
+    Photo photo2 = new Photo();
+    photo.addLabel(PhotoLabel.Kind.TITLE, "a");
+    photo2.addLabel(PhotoLabel.Kind.TITLE, "a");
+    assertTrue(photo.compareTo(photo2) ==0);
+
+  }
+  @Test
+  public void compareToPhotoWithoutTitle(){
+    Photo photo2 = new Photo();
+    photo.addLabel(PhotoLabel.Kind.TITLE, "a");
+    assertTrue(photo.compareTo(photo2) > 0);
+  }
+
 
 }

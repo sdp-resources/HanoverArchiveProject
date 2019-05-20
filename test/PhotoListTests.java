@@ -130,6 +130,19 @@ public class PhotoListTests {
     p1.addLabel(PhotoLabel.Kind.DATE, "1991");
     p2.addLabel(PhotoLabel.Kind.DATE, "1991");
     p3.addLabel(PhotoLabel.Kind.DATE, "2005");
+    p1.addLabel(PhotoLabel.Kind.TITLE, "b");
+    p2.addLabel(PhotoLabel.Kind.TITLE, "c");
+    p3.addLabel(PhotoLabel.Kind.TITLE, "a");
+
+  }
+  @Test
+  public void canSortPhotoList(){
+    addThreePhotosToList();
+    photoList.sort();
+    assertTrue(photoList.get(0).getLabelValue(PhotoLabel.Kind.TITLE) == "a");
+    assertTrue(photoList.get(1).getLabelValue(PhotoLabel.Kind.TITLE) == "b");
+    assertTrue(photoList.get(2).getLabelValue(PhotoLabel.Kind.TITLE) == "c");
+
   }
 
 
