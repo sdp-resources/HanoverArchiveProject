@@ -1,0 +1,24 @@
+body {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4EaaW-4C6yV4VdTIwFC2_8ShuyfX_vUve9YSAYRPOzGXvH8C8jg");
+
+}
+h1 {
+    font-family: "Times New Roman",fantasy;
+    text-shadow:  1px 1px #ffffff;
+    color: firebrick;
+    font-size: x-large;
+    text-align: center;
+}
+p {
+    font-family: "Times New Roman",fantasy;
+    color: firebrick;
+    font-size: medium;
+    text-align: left;
+}
+p1 {
+    font-family: "Times New Roman",fantasy;
+    color: cornflowerblue;
+    font-size: x-large;
+    text-align: left;
+}
+
