@@ -52,4 +52,9 @@ public class SimpleDemo  {
     }
   }
 
+  public static void main(String[] args){
+    SimpleDemo demo = new SimpleDemo();
+    demo.runDemo();
+  }
+
 }
