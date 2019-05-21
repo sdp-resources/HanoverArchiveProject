@@ -21,7 +21,7 @@ public class LabelSet implements Iterable<PhotoLabel>{
 
   public void remove(PhotoLabel.Kind kind) {
     for(PhotoLabel label : labels) {
-      if(label.getKind() == kind) {
+      if(hasMatchingKind(kind, label)) {
         labels.remove(label);
         break;
       }
@@ -30,7 +30,7 @@ public class LabelSet implements Iterable<PhotoLabel>{
 
   public boolean contains(PhotoLabel.Kind kind) {
     for(PhotoLabel label : labels) {
-      if(label.getKind() == kind) {
+      if(hasMatchingKind(kind, label)) {
         return true;
       }
     }
@@ -39,7 +39,7 @@ public class LabelSet implements Iterable<PhotoLabel>{
 
   public String getLabelValue(PhotoLabel.Kind kind) {
     for (PhotoLabel label : labels) {
-      if (label.getKind() == kind) {
+      if (hasMatchingKind(kind, label)) {
         return label.getValue();
       }
     }
@@ -48,10 +48,14 @@ public class LabelSet implements Iterable<PhotoLabel>{
 
   public void setLabelValue(PhotoLabel.Kind kind, String newValue) {
     for (PhotoLabel label : labels) {
-      if (label.getKind() == kind) {
+      if (hasMatchingKind(kind, label)) {
         label.setValue(newValue);
       }
     }
+  }
+
+  private boolean hasMatchingKind(PhotoLabel.Kind kind, PhotoLabel label) {
+    return label.getKind() == kind;
   }
 
   public Iterator<PhotoLabel> iterator() {
