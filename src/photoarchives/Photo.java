@@ -58,8 +58,8 @@ public class Photo implements Comparable<Photo> {
     return labels.getLabelValue(kind);
   }
 
-  public void setLabelValue(PhotoLabel.Kind kind, String newvalue) {
-    labels.setLabelValue(kind, newvalue);
+  public void setLabelValue(PhotoLabel.Kind kind, String newValue) {
+    labels.setLabelValue(kind, newValue);
   }
 
   public boolean hasLabel(PhotoLabel.Kind kind) {
