@@ -32,16 +32,12 @@ public class PhotoList implements Iterable<Photo>{
       {
           searchedList.addPhoto(photo);
       }
-      else
-      {
-        continue;
-      }
     }
     return searchedList;
   }
 
   private boolean hasMatchingLabelValue(Photo photo, PhotoLabel.Kind kind, String value) {
-    return photo.hasLabel(kind) && photo.getLabelValue(kind) == value;
+    return photo.hasLabel(kind) && photo.getLabelValue(kind).equals(value);
   }
   public void sort(){
     Collections.sort(photoList);
