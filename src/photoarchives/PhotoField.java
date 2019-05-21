@@ -1,16 +1,16 @@
 package photoarchives;
 
-public class PhotoLabel {
+public class PhotoField {
 
   private Kind kind;
   private String value;
 
-  public PhotoLabel(Kind kind, String value) {
+  public PhotoField(Kind kind, String value) {
     this.value = value;
     this.kind =  kind;
   }
 
-  public PhotoLabel(){
+  public PhotoField(){
     this.kind = Kind.NONE;
     this.value = "";
   }

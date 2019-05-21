@@ -24,11 +24,11 @@ public class PhotoList implements Iterable<Photo>{
 
   public Photo get(int i) { return photoList.get(i); }
 
-  public PhotoList search(PhotoLabel.Kind kind, String value) {
+  public PhotoList search(PhotoField.Kind kind, String value) {
     PhotoList searchedList = new PhotoList();
     for (Photo photo : photoList)
     {
-      if (hasMatchingLabelValue(photo, kind, value))
+      if (hasMatchingFieldValue(photo, kind, value))
       {
           searchedList.addPhoto(photo);
       }
@@ -36,8 +36,8 @@ public class PhotoList implements Iterable<Photo>{
     return searchedList;
   }
 
-  private boolean hasMatchingLabelValue(Photo photo, PhotoLabel.Kind kind, String value) {
-    return photo.hasLabel(kind) && photo.getLabelValue(kind).equals(value);
+  private boolean hasMatchingFieldValue(Photo photo, PhotoField.Kind kind, String value) {
+    return photo.hasField(kind) && photo.getFieldValue(kind).equals(value);
   }
   public void sort(Comparator SortingComparator){
     Collections.sort(photoList, SortingComparator);

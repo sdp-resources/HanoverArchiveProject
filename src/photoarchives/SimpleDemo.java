@@ -1,7 +1,6 @@
 package photoarchives;
 
 import java.util.Scanner;
-import java.util.UUID;
 
 public class SimpleDemo  {
   private String archiveDir;
@@ -25,10 +24,10 @@ public class SimpleDemo  {
   }
 
   public void printLabels(Photo photo){
-    photo.addLabel(PhotoLabel.Kind.LOCATION, "Hanover");
-    photo.addLabel(PhotoLabel.Kind.TITLE, "Title");
-    photo.addLabel(PhotoLabel.Kind.SUBJECT, "Sports");
-    for (PhotoLabel label : photo.getLabels()) {
+    photo.addField(PhotoField.Kind.LOCATION, "Hanover");
+    photo.addField(PhotoField.Kind.TITLE, "Title");
+    photo.addField(PhotoField.Kind.SUBJECT, "Sports");
+    for (PhotoField label : photo.getFields()) {
       System.out.println(label.getKind() + ": " + label.getValue());
     }
 

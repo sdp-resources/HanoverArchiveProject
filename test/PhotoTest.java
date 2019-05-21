@@ -1,9 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import photoarchives.Photo;
-import photoarchives.PhotoLabel;
-
-import java.awt.*;
+import photoarchives.PhotoField;
 
 import static junit.framework.TestCase.*;
 
@@ -21,7 +19,7 @@ public class PhotoTest {
     Photo p1 = new Photo();
     assertEquals(null, p1.getUploadedFrom());
     assertEquals(null, p1.getID());
-    assertEquals(0, p1.getLabels().size());
+    assertEquals(0, p1.getFields().size());
   }
 
   @Test
@@ -46,50 +44,50 @@ public class PhotoTest {
   }
 
   @Test
-  public void getLabelValue_ReturnsCorrectValue() {
-    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
-    assertEquals("1991", photo.getLabelValue(PhotoLabel.Kind.DATE));
+  public void getFieldValue_ReturnsCorrectValue() {
+    photo.addField(PhotoField.Kind.DATE, "1991");
+    assertEquals("1991", photo.getFieldValue(PhotoField.Kind.DATE));
   }
 
   @Test
-  public void getLabelValue_ReturnsCorrectValueForMultipleLabels() {
-    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
-    photo.addLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
-    photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
-    assertEquals("Test Description", photo.getLabelValue(PhotoLabel.Kind.DESCRIPTION));
-    assertEquals("CS", photo.getLabelValue(PhotoLabel.Kind.SUBJECT));
-    assertEquals("1991", photo.getLabelValue(PhotoLabel.Kind.DATE));
+  public void getFieldValue_ReturnsCorrectValueForMultipleFields() {
+    photo.addField(PhotoField.Kind.DATE, "1991");
+    photo.addField(PhotoField.Kind.DESCRIPTION, "Test Description");
+    photo.addField(PhotoField.Kind.SUBJECT, "CS");
+    assertEquals("Test Description", photo.getFieldValue(PhotoField.Kind.DESCRIPTION));
+    assertEquals("CS", photo.getFieldValue(PhotoField.Kind.SUBJECT));
+    assertEquals("1991", photo.getFieldValue(PhotoField.Kind.DATE));
   }
 
   @Test
-  public void setLabelValue_ChangeDateLabel() {
-    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
-    photo.setLabelValue(PhotoLabel.Kind.DATE, "2000");
-    assertEquals("2000", photo.getLabelValue(PhotoLabel.Kind.DATE));
+  public void setFieldValue_ChangeDateField() {
+    photo.addField(PhotoField.Kind.DATE, "1991");
+    photo.setFieldValue(PhotoField.Kind.DATE, "2000");
+    assertEquals("2000", photo.getFieldValue(PhotoField.Kind.DATE));
   }
 
   @Test
-  public void setLabelValue_ChangeLabelFromSetOfThree() {
-    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
-    photo.addLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
-    photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
-    photo.setLabelValue(PhotoLabel.Kind.DESCRIPTION, "New Description");
-    assertEquals("New Description", photo.getLabelValue(PhotoLabel.Kind.DESCRIPTION));
+  public void setFieldValue_ChangeFieldFromSetOfThree() {
+    photo.addField(PhotoField.Kind.DATE, "1991");
+    photo.addField(PhotoField.Kind.DESCRIPTION, "Test Description");
+    photo.addField(PhotoField.Kind.SUBJECT, "CS");
+    photo.setFieldValue(PhotoField.Kind.DESCRIPTION, "New Description");
+    assertEquals("New Description", photo.getFieldValue(PhotoField.Kind.DESCRIPTION));
   }
 
   @Test
-  public void hasLabel_ReturnsTrueFromSetOfThree() {
-    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
-    photo.addLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
-    photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
-    assertTrue(photo.hasLabel(PhotoLabel.Kind.DESCRIPTION));
+  public void hasField_ReturnsTrueFromSetOfThree() {
+    photo.addField(PhotoField.Kind.DATE, "1991");
+    photo.addField(PhotoField.Kind.DESCRIPTION, "Test Description");
+    photo.addField(PhotoField.Kind.SUBJECT, "CS");
+    assertTrue(photo.hasField(PhotoField.Kind.DESCRIPTION));
   }
 
   @Test
-  public void hasLabel_ReturnsFalseFromSetOfThree() {
-    photo.addLabel(PhotoLabel.Kind.DATE, "1991");
-    photo.addLabel(PhotoLabel.Kind.DESCRIPTION, "Test Description");
-    photo.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
-    assertFalse(photo.hasLabel(PhotoLabel.Kind.TITLE));
+  public void hasField_ReturnsFalseFromSetOfThree() {
+    photo.addField(PhotoField.Kind.DATE, "1991");
+    photo.addField(PhotoField.Kind.DESCRIPTION, "Test Description");
+    photo.addField(PhotoField.Kind.SUBJECT, "CS");
+    assertFalse(photo.hasField(PhotoField.Kind.TITLE));
   }
 }

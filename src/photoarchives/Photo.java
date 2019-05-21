@@ -1,26 +1,24 @@
 package photoarchives;
 
-import java.io.File;
-
 public class Photo {
 
   private String uploadedFrom;
   private String id;
-  private LabelSet labels;
+  private FieldSet fields;
   private String imageLocation;
   private static String imagePrefix = "image_";
 
   public Photo() {
     this.uploadedFrom = null;
     this.id = null;
-    this.labels = new LabelSet();
+    this.fields = new FieldSet();
     this.imageLocation = null;
   }
 
   public Photo(String source) {
     this.uploadedFrom = source;
     this.id = null;
-    this.labels = new LabelSet();
+    this.fields = new FieldSet();
     this.imageLocation = null;
   }
 
@@ -38,32 +36,32 @@ public class Photo {
 
   public void setID(String newID) { this.id = imagePrefix + newID; }
 
-  public LabelSet getLabels() {
-    return labels;
+  public FieldSet getFields() {
+    return fields;
   }
 
   public void setImageLocation(String imageDir) {
     this.imageLocation = imageDir + "/" + id + ".jpeg";
   }
 
-  public void addLabel(PhotoLabel.Kind kind, String value) {
-    labels.add(new PhotoLabel(kind, value));
+  public void addField(PhotoField.Kind kind, String value) {
+    fields.add(new PhotoField(kind, value));
   }
 
   public String getImageLocation() {
     return imageLocation;
   }
 
-  public String getLabelValue(PhotoLabel.Kind kind) {
-    return labels.getLabelValue(kind);
+  public String getFieldValue(PhotoField.Kind kind) {
+    return fields.getFieldValue(kind);
   }
 
-  public void setLabelValue(PhotoLabel.Kind kind, String newValue) {
-    labels.setLabelValue(kind, newValue);
+  public void setFieldValue(PhotoField.Kind kind, String newValue) {
+    fields.setFieldValue(kind, newValue);
   }
 
-  public boolean hasLabel(PhotoLabel.Kind kind) {
-    return labels.contains(kind);
+  public boolean hasField(PhotoField.Kind kind) {
+    return fields.contains(kind);
   }
 
 }
