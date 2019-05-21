@@ -2,7 +2,7 @@ package photoarchives;
 
 import java.io.File;
 
-public class Photo implements Comparable<Photo> {
+public class Photo {
 
   private String uploadedFrom;
   private String id;
@@ -66,8 +66,4 @@ public class Photo implements Comparable<Photo> {
     return labels.contains(kind);
   }
 
-  @Override
-  public int compareTo(Photo otherPhoto) {
-    return this.getLabelValue(PhotoLabel.Kind.TITLE).compareTo(otherPhoto.getLabelValue(PhotoLabel.Kind.TITLE));
-  }
 }

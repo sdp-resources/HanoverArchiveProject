@@ -118,7 +118,7 @@ public class LabelSetTest {
   @Test
   public void getLabelValueLabelSetDoesntContainLabelKind() {
     addThreeLabelsToSet();
-    assertEquals("NO LABEL OF KIND TITLE", labels.getLabelValue(PhotoLabel.Kind.TITLE));
+    assertEquals("~", labels.getLabelValue(PhotoLabel.Kind.TITLE));
   }
 
   @Test

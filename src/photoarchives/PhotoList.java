@@ -39,8 +39,8 @@ public class PhotoList implements Iterable<Photo>{
   private boolean hasMatchingLabelValue(Photo photo, PhotoLabel.Kind kind, String value) {
     return photo.hasLabel(kind) && photo.getLabelValue(kind).equals(value);
   }
-  public void sort(){
-    Collections.sort(photoList);
+  public void sort(Comparator SortingComparator){
+    Collections.sort(photoList, SortingComparator);
   }
 }
 

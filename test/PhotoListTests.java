@@ -1,8 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
-import photoarchives.Photo;
-import photoarchives.PhotoLabel;
-import photoarchives.PhotoList;
+import photoarchives.*;
+import photoarchives.SortingComparators.*;
 
 import java.util.Iterator;
 
@@ -133,15 +132,77 @@ public class PhotoListTests {
     p1.addLabel(PhotoLabel.Kind.TITLE, "b");
     p2.addLabel(PhotoLabel.Kind.TITLE, "c");
     p3.addLabel(PhotoLabel.Kind.TITLE, "a");
+    p1.addLabel(PhotoLabel.Kind.SUBJECT, "Math");
+    p2.addLabel(PhotoLabel.Kind.SUBJECT, "CS");
+    p3.addLabel(PhotoLabel.Kind.SUBJECT, "Science");
+    p1.addLabel(PhotoLabel.Kind.HANOVER_SUBJECT, "Math");
+    p2.addLabel(PhotoLabel.Kind.HANOVER_SUBJECT, "CS");
+    p3.addLabel(PhotoLabel.Kind.HANOVER_SUBJECT, "Science");
+    p1.addLabel(PhotoLabel.Kind.LOCATION, "Lynn");
+    p2.addLabel(PhotoLabel.Kind.LOCATION, "CC");
+    p3.addLabel(PhotoLabel.Kind.LOCATION, "Wiley");
+    p1.addLabel(PhotoLabel.Kind.COLLECTION_NAME, "Name");
+    p2.addLabel(PhotoLabel.Kind.COLLECTION_NAME, "Collection");
+    p3.addLabel(PhotoLabel.Kind.COLLECTION_NAME, "Test");
+
 
   }
   @Test
-  public void canSortPhotoList(){
+  public void canSortPhotoListByTitle(){
     addThreePhotosToList();
-    photoList.sort();
+    photoList.sort(new TitleSortingComparator());
     assertTrue(photoList.get(0).getLabelValue(PhotoLabel.Kind.TITLE) == "a");
     assertTrue(photoList.get(1).getLabelValue(PhotoLabel.Kind.TITLE) == "b");
     assertTrue(photoList.get(2).getLabelValue(PhotoLabel.Kind.TITLE) == "c");
+
+  }
+  @Test
+  public void canSortPhotoListByDate(){
+    addThreePhotosToList();
+    Photo photo = new Photo();
+    photo.addLabel(PhotoLabel.Kind.DATE, "1950");
+    photoList.addPhoto(photo);
+    photoList.sort(new DateSortingComparator());
+    assertTrue(photoList.get(0).getLabelValue(PhotoLabel.Kind.DATE) == "1950");
+    assertTrue(photoList.get(1).getLabelValue(PhotoLabel.Kind.DATE) == "1991");
+    assertTrue(photoList.get(2).getLabelValue(PhotoLabel.Kind.DATE) == "1991");
+    assertTrue(photoList.get(3).getLabelValue(PhotoLabel.Kind.DATE) == "2005");
+
+  }
+  @Test
+  public void canSortPhotoListBySubject(){
+    addThreePhotosToList();
+    photoList.sort(new SubjectSortingComparator());
+    assertTrue(photoList.get(0).getLabelValue(PhotoLabel.Kind.SUBJECT) == "CS");
+    assertTrue(photoList.get(1).getLabelValue(PhotoLabel.Kind.SUBJECT) == "Math");
+    assertTrue(photoList.get(2).getLabelValue(PhotoLabel.Kind.SUBJECT) == "Science");
+
+  }
+  @Test
+  public void canSortPhotoListByHanover_Subject(){
+    addThreePhotosToList();
+    photoList.sort(new HanoverSubjectSortingComparator());
+    assertTrue(photoList.get(0).getLabelValue(PhotoLabel.Kind.HANOVER_SUBJECT) == "CS");
+    assertTrue(photoList.get(1).getLabelValue(PhotoLabel.Kind.HANOVER_SUBJECT) == "Math");
+    assertTrue(photoList.get(2).getLabelValue(PhotoLabel.Kind.HANOVER_SUBJECT) == "Science");
+
+  }
+  @Test
+  public void canSortPhotoListByLocation(){
+    addThreePhotosToList();
+    photoList.sort(new LocationSortingComparator());
+    assertTrue(photoList.get(0).getLabelValue(PhotoLabel.Kind.LOCATION) == "CC");
+    assertTrue(photoList.get(1).getLabelValue(PhotoLabel.Kind.LOCATION) == "Lynn");
+    assertTrue(photoList.get(2).getLabelValue(PhotoLabel.Kind.LOCATION) == "Wiley");
+
+  }
+  @Test
+  public void canSortPhotoListByCollectionName(){
+    addThreePhotosToList();
+    photoList.sort(new CollectionNameSortingComparator());
+    assertTrue(photoList.get(0).getLabelValue(PhotoLabel.Kind.COLLECTION_NAME) == "Collection");
+    assertTrue(photoList.get(1).getLabelValue(PhotoLabel.Kind.COLLECTION_NAME) == "Name");
+    assertTrue(photoList.get(2).getLabelValue(PhotoLabel.Kind.COLLECTION_NAME) == "Test");
 
   }
 

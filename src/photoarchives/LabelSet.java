@@ -43,7 +43,7 @@ public class LabelSet implements Iterable<PhotoLabel>{
         return label.getValue();
       }
     }
-    return "NO LABEL OF KIND " + kind;
+    return "~";
   }
 
   public void setLabelValue(PhotoLabel.Kind kind, String newValue) {
