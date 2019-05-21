@@ -3,6 +3,7 @@ package photoarchives;
 public class StringFieldValue implements FieldValueInterface {
   private String value = null;
 
+  @Override
   public void add(String string) {
     this.value = string;
   }

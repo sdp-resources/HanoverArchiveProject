@@ -8,10 +8,13 @@ public class ListFieldValue implements FieldValueInterface {
   public ListFieldValue() {
     list = new ArrayList();
   }
+
+  @Override
   public void add(String string) {
     list.add(string);
   }
 
+  @Override
   public String get() {
     return this.toString();
   }
