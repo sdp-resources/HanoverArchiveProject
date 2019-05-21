@@ -3,24 +3,24 @@ package photoarchives;
 public class PhotoField {
 
   private Kind kind;
-  private String value;
+  private FieldValueInterface value;
 
-  public PhotoField(Kind kind, String value) {
+  public PhotoField(Kind kind,FieldValueInterface value) {
     this.value = value;
     this.kind =  kind;
   }
 
   public PhotoField(){
     this.kind = Kind.NONE;
-    this.value = "";
+    this.value = null;
   }
 
   public String getValue() {
-    return value;
+    return value.get();
   }
 
   public void setValue(String value) {
-    this.value = value;
+    this.value.add(value);
   }
 
   public Kind getKind() {

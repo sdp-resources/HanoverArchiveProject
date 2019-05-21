@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 import photoarchives.FieldSet;
 import photoarchives.PhotoField;
+import photoarchives.StringFieldValue;
 
 import java.util.Iterator;
 
@@ -18,9 +19,9 @@ public class FieldSetTest {
   @Before
   public void setUp() throws Exception {
     fields = new FieldSet();
-    field1 = new PhotoField(PhotoField.Kind.DATE, "1991");
-    field2 = new PhotoField(PhotoField.Kind.DESCRIPTION, "Test Description");
-    field3 = new PhotoField(PhotoField.Kind.SUBJECT, "CS");
+    field1 = new PhotoField(PhotoField.Kind.DATE, new StringFieldValue("1991"));
+    field2 = new PhotoField(PhotoField.Kind.DESCRIPTION, new StringFieldValue("Test Description"));
+    field3 = new PhotoField(PhotoField.Kind.SUBJECT, new StringFieldValue("CS"));
   }
 
   @Test

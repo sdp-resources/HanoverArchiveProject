@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import photoarchives.PhotoField;
+import photoarchives.StringFieldValue;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -42,7 +43,7 @@ public class EditFieldTests {
 
   @Test
   public void canCreateField_GivenKindValuePair(){
-    PhotoField newField = new PhotoField(PhotoField.Kind.DATE, "1999");
+    PhotoField newField = new PhotoField(PhotoField.Kind.DATE, new StringFieldValue("1999"));
     assertThat(newField.getValue(), is("1999"));
     assertThat(newField.getKind(), is (PhotoField.Kind.DATE));
   }

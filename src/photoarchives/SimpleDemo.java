@@ -19,9 +19,9 @@ public class SimpleDemo  {
   }
 
   public void printLabels(Photo photo) {
-    photo.addField(PhotoField.Kind.LOCATION, "Hanover");
-    photo.addField(PhotoField.Kind.TITLE, "Title");
-    photo.addField(PhotoField.Kind.SUBJECT, "Sports");
+    photo.addField(PhotoField.Kind.LOCATION, new StringFieldValue("Hanover"));
+    photo.addField(PhotoField.Kind.TITLE, new StringFieldValue("Title"));
+    photo.addField(PhotoField.Kind.SUBJECT, new StringFieldValue("Sports"));
     for (PhotoField label : photo.getFields()) {
       System.out.println(label.getKind() + ": " + label.getValue());
     }
@@ -46,7 +46,7 @@ public class SimpleDemo  {
   public void addPhotoFromUser() {
     Scanner scanner = new Scanner(System.in);
     Photo photo = new Photo(getURL(scanner));
-    photo.addField(PhotoField.Kind.TITLE, getTitle(scanner));
+    photo.addField(PhotoField.Kind.TITLE, new StringFieldValue(getTitle(scanner)));
     photoArchive.addPhoto(photo);
   }
 

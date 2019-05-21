@@ -44,7 +44,7 @@ public class Photo {
     this.imageLocation = imageDir + "/" + id + ".jpeg";
   }
 
-  public void addField(PhotoField.Kind kind, String value) {
+  public void addField(PhotoField.Kind kind, FieldValueInterface value) {
     fields.add(new PhotoField(kind, value));
   }
 

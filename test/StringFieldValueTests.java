@@ -10,7 +10,7 @@ public class StringFieldValueTests {
 
   @Before
   public void setup(){
-    string = new StringFieldValue();
+    string = new StringFieldValue("");
   }
   @Test
   public void canCreateStringFieldValue(){

@@ -93,9 +93,9 @@ public class PhotoListTests {
 
   @Test
   public void searchForDate_Value1991_ListOfSizeOne_ExpectOneInFinalList() {
-    photo.addField(PhotoField.Kind.DATE, "1991");
+    photo.addField(PhotoField.Kind.DATE, new StringFieldValue("1991"));
     photoList.addPhoto(photo);
-    PhotoList test = photoList.search(PhotoField.Kind.DATE, "1991");
+    PhotoList test = photoList.search(PhotoField.Kind.DATE, new StringFieldValue("1991"));
     assertEquals(1, test.getLength());
     assertEquals("1991", test.get(0).getFieldValue(PhotoField.Kind.DATE));
   }
@@ -103,7 +103,7 @@ public class PhotoListTests {
   @Test
   public void searchForDate_Value1991_ListOfSizeThree_ExpectTwoInFinalList() {
     addThreePhotosToList();
-    PhotoList test = photoList.search(PhotoField.Kind.DATE, "1991");
+    PhotoList test = photoList.search(PhotoField.Kind.DATE, new StringFieldValue("1991"));
     assertEquals(2, test.getLength());
     assertEquals("1991", test.get(0).getFieldValue(PhotoField.Kind.DATE));
     assertEquals("1991", test.get(1).getFieldValue(PhotoField.Kind.DATE));
@@ -112,7 +112,7 @@ public class PhotoListTests {
   @Test
   public void searchForDate_Value1991_ListOfSizeThree_NoSuchFieldValue() {
     addThreePhotosToList();
-    PhotoList test = photoList.search(PhotoField.Kind.DATE, "2020");
+    PhotoList test = photoList.search(PhotoField.Kind.DATE, new StringFieldValue("2020"));
     assertEquals(0, test.getLength());
   }
 
@@ -126,24 +126,24 @@ public class PhotoListTests {
     photoList.addPhoto(p1);
     photoList.addPhoto(p2);
     photoList.addPhoto(p3);
-    p1.addField(PhotoField.Kind.DATE, "1991");
-    p2.addField(PhotoField.Kind.DATE, "1991");
-    p3.addField(PhotoField.Kind.DATE, "2005");
-    p1.addField(PhotoField.Kind.TITLE, "b");
-    p2.addField(PhotoField.Kind.TITLE, "c");
-    p3.addField(PhotoField.Kind.TITLE, "a");
-    p1.addField(PhotoField.Kind.SUBJECT, "Math");
-    p2.addField(PhotoField.Kind.SUBJECT, "CS");
-    p3.addField(PhotoField.Kind.SUBJECT, "Science");
-    p1.addField(PhotoField.Kind.HANOVER_SUBJECT, "Math");
-    p2.addField(PhotoField.Kind.HANOVER_SUBJECT, "CS");
-    p3.addField(PhotoField.Kind.HANOVER_SUBJECT, "Science");
-    p1.addField(PhotoField.Kind.LOCATION, "Lynn");
-    p2.addField(PhotoField.Kind.LOCATION, "CC");
-    p3.addField(PhotoField.Kind.LOCATION, "Wiley");
-    p1.addField(PhotoField.Kind.COLLECTION_NAME, "Name");
-    p2.addField(PhotoField.Kind.COLLECTION_NAME, "Collection");
-    p3.addField(PhotoField.Kind.COLLECTION_NAME, "Test");
+    p1.addField(PhotoField.Kind.DATE, new StringFieldValue(("1991")));
+    p2.addField(PhotoField.Kind.DATE, new StringFieldValue("1991"));
+    p3.addField(PhotoField.Kind.DATE, new StringFieldValue("2005"));
+    p1.addField(PhotoField.Kind.TITLE, new StringFieldValue("b"));
+    p2.addField(PhotoField.Kind.TITLE, new StringFieldValue("c"));
+    p3.addField(PhotoField.Kind.TITLE, new StringFieldValue("a"));
+    p1.addField(PhotoField.Kind.SUBJECT, new StringFieldValue("Math"));
+    p2.addField(PhotoField.Kind.SUBJECT, new StringFieldValue("CS"));
+    p3.addField(PhotoField.Kind.SUBJECT, new StringFieldValue("Science"));
+    p1.addField(PhotoField.Kind.HANOVER_SUBJECT, new StringFieldValue("Math"));
+    p2.addField(PhotoField.Kind.HANOVER_SUBJECT, new StringFieldValue("CS"));
+    p3.addField(PhotoField.Kind.HANOVER_SUBJECT, new StringFieldValue("Science"));
+    p1.addField(PhotoField.Kind.LOCATION, new StringFieldValue("Lynn"));
+    p2.addField(PhotoField.Kind.LOCATION, new StringFieldValue("CC"));
+    p3.addField(PhotoField.Kind.LOCATION, new StringFieldValue("Wiley"));
+    p1.addField(PhotoField.Kind.COLLECTION_NAME, new StringFieldValue("Name"));
+    p2.addField(PhotoField.Kind.COLLECTION_NAME, new StringFieldValue("Collection"));
+    p3.addField(PhotoField.Kind.COLLECTION_NAME, new StringFieldValue("Test"));
 
 
   }
@@ -160,7 +160,7 @@ public class PhotoListTests {
   public void canSortPhotoListByDate(){
     addThreePhotosToList();
     Photo photo = new Photo();
-    photo.addField(PhotoField.Kind.DATE, "1950");
+    photo.addField(PhotoField.Kind.DATE, new StringFieldValue("1950"));
     photoList.addPhoto(photo);
     photoList.sort(new DateSortingComparator());
     assertTrue(photoList.get(0).getFieldValue(PhotoField.Kind.DATE) == "1950");

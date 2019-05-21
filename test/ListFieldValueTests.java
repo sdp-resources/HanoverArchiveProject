@@ -22,7 +22,7 @@ public class ListFieldValueTests {
     valueList.add("this");
     valueList.add("is");
     valueList.add("it");
-    assertEquals("this is it ", valueList.get());
+    assertEquals("this is it", valueList.get());
   }
 
 }

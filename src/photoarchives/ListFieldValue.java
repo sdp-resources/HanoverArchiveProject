@@ -23,7 +23,11 @@ public class ListFieldValue implements FieldValueInterface {
   public String toString() {
     String str = "";
     for (int i = 0; i < list.size(); i++) {
-      str += list.get(i) + " ";
+      if (i == list.size() - 1) {
+        str += list.get(i);
+      } else {
+        str += list.get(i) + " ";
+      }
     }
     return str;
   }

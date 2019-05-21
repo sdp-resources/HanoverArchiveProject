@@ -1,8 +1,9 @@
 package photoarchives;
 
 public interface FieldValueInterface {
-  public void add(String string);
-  public String get();
-  public String toString();
+
+  void add(String string);
+  String get();
+  String toString();
 
 }
