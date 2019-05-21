@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhotoDetails {
-  private List<PhotoField> labels;
+  private List<PhotoField> fields;
 
 
 
   public PhotoDetails(){
-    labels = new ArrayList<>();
+    fields = new ArrayList<>();
   }
 
   public boolean isEmpty() {
-    return labels.isEmpty();
+    return fields.isEmpty();
   }
 
 
-  public Object getLabels() {
-    return labels;
+  public Object getFields() {
+    return fields;
   }
 }
