@@ -30,14 +30,14 @@ public class PhotoListTests {
   public void getFirstPhoto_ListOfLengthOne() {
     photoList.addPhoto(photo);
     Photo photo = photoList.get(0);
-    assertEquals("test source", photo.getUploadedFrom());
+    assertEquals("test source", photo.getSource());
   }
 
   @Test
   public void getSecondPhoto_ListOfLengthThree() {
     addThreePhotosToList();
     Photo photo = photoList.get(1);
-    assertEquals("test source2", photo.getUploadedFrom());
+    assertEquals("test source2", photo.getSource());
   }
 
   @Test
@@ -79,7 +79,7 @@ public class PhotoListTests {
     addThreePhotosToList();
     Iterator<Photo> iter = photoList.iterator();
     Photo test = iter.next();
-    assertEquals("test source1", test.getUploadedFrom());
+    assertEquals("test source1", test.getSource());
   }
 
   @Test
@@ -88,7 +88,7 @@ public class PhotoListTests {
     Iterator<Photo> iter = photoList.iterator();
     Photo first = iter.next();
     Photo second = iter.next();
-    assertEquals("test source2", second.getUploadedFrom());
+    assertEquals("test source2", second.getSource());
   }
 
   @Test

@@ -2,46 +2,46 @@ package photoarchives;
 
 public class Photo {
 
-  private String uploadedFrom;
+  private String source;
   private String id;
   private FieldSet fields;
   private String imageLocation;
-  private static String imagePrefix = "image_";
+  private static final String IMAGE_PREFIX = "image_";
 
   public Photo() {
-    this.uploadedFrom = null;
+    this.source = null;
     this.id = null;
     this.fields = new FieldSet();
     this.imageLocation = null;
   }
 
   public Photo(String source) {
-    this.uploadedFrom = source;
+    this.source = source;
     this.id = null;
     this.fields = new FieldSet();
     this.imageLocation = null;
   }
 
-  public String getUploadedFrom() {
-    return this.uploadedFrom;
+  public String getSource() {
+    return this.source;
   }
 
   public String getID() {
     return this.id;
   }
 
-  public void setUploadedFrom(String s) {
-    this.uploadedFrom = s;
+  public void setSource(String s) {
+    this.source = s;
   }
 
-  public void setID(String newID) { this.id = imagePrefix + newID; }
+  public void setID(String newID) { this.id = IMAGE_PREFIX + newID; }
 
   public FieldSet getFields() {
     return fields;
   }
 
   public void setImageLocation(String imageDir) {
-    this.imageLocation = imageDir + "/" + id + ".jpeg";
+    this.imageLocation = imageDir + "/" + id + ".png";
   }
 
   public void addField(PhotoField.Kind kind, String value) {

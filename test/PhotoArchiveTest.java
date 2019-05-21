@@ -4,7 +4,6 @@ import org.junit.Test;
 import photoarchives.*;
 
 import java.io.File;
-import java.util.UUID;
 
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertEquals;
@@ -45,8 +44,8 @@ public class PhotoArchiveTest {
 
   @Test
   public void addPhotoToPhotoArchivePhotoList() {
-    blankPhoto.setUploadedFrom("testSource");
-    photoArchive.addPhotoToArchive(blankPhoto);
+    blankPhoto.setSource("testSource");
+    photoArchive.addPhoto(blankPhoto);
     assertEquals(1, photoArchive.getPhotoList().getLength());
   }
 
@@ -82,14 +81,14 @@ public class PhotoArchiveTest {
   public void testingUploadPhoto() {
     String imageLocation = "/home/walkert20/CS321/HanoverArchiveProject/assets/images/demoImage.jpg";
     Photo examplePhoto = new Photo(imageLocation);
-    photoArchive.addPhotoToArchive(examplePhoto);
+    photoArchive.addPhoto(examplePhoto);
     assertEquals(1, photoArchive.getSize());
   }
 
   @Test
   public void addPhotoToPhotoArchivePhotoList_usingURL() {
-    blankPhoto.setUploadedFrom("https://www.wikihow.com/images/thumb/f/fc/Get-the-URL-for-Pictures-Step-1-Version-6.jpg/aid597183-v4-900px-Get-the-URL-for-Pictures-Step-1-Version-6.jpg");
-    photoArchive.addPhotoToArchive(blankPhoto);
+    blankPhoto.setSource("https://www.wikihow.com/images/thumb/f/fc/Get-the-URL-for-Pictures-Step-1-Version-6.jpg/aid597183-v4-900px-Get-the-URL-for-Pictures-Step-1-Version-6.jpg");
+    photoArchive.addPhoto(blankPhoto);
     assertEquals(1, photoArchive.getPhotoList().getLength());
   }
 
