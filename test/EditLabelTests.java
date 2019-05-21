@@ -16,6 +16,13 @@ public class EditLabelTests {
   }
 
   @Test
+  public void TestGetName() {
+    label.setKind(PhotoLabel.Kind.DATE);
+    assertThat(label.getKind(), is(PhotoLabel.Kind.DATE));
+    assertThat(label.getKind().getName(), is("Date"));
+  }
+
+  @Test
   public void newLabelHasValue_EmptyString() {
     assertThat(label.getValue(), is(""));
   }
