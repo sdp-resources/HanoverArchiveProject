@@ -16,9 +16,23 @@ p {
     text-align: left;
 }
 p1 {
-    font-family: "Times New Roman",fantasy;
+    font-family: "Times New Roman", fantasy;
     color: cornflowerblue;
     font-size: x-large;
+    text-align: left;
+}
+
+p2 {
+    font-family: "Times New Roman",fantasy;
+    color: whitesmoke;
+    font-size: x-large;
+    text-align: left;
+}
+
+p3 {
+    font-family: "Times New Roman",fantasy;
+    color: whitesmoke;
+    font-size: medium;
     text-align: left;
 }
 
