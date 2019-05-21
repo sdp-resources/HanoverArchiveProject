@@ -41,7 +41,7 @@ public class Photo {
   }
 
   public void setImageLocation(String imageDir) {
-    this.imageLocation = imageDir + "/" + id + ".png";
+    this.imageLocation = imageDir + "/" + id + ".jpeg";
   }
 
   public void addField(PhotoField.Kind kind, String value) {
@@ -63,5 +63,11 @@ public class Photo {
   public boolean hasField(PhotoField.Kind kind) {
     return fields.contains(kind);
   }
+
+  public String getTitle() {return getFieldValue(PhotoField.Kind.TITLE);}
+
+  public String getLocation() {return getFieldValue(PhotoField.Kind.LOCATION);}
+
+  public String getImgURL() {return "file://" + imageLocation;}
 
 }

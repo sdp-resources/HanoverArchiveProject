@@ -1,12 +1,17 @@
 <html>
 <body>
   <table>
+  {{#with photoArchive}}
   {{#each photos}}
     <tr>
-      <td>{{Title}}</td>
-      <td>{{ImageLocation}}</td>
+      <td>
+          <img src="{{imgURL}}">
+      </td>
+      <td>{{title}}</td>
+      <td>{{location}}</td>
     </tr>
   {{/each}}
+  {{/with}}
   </table>
 </body>
 </html>

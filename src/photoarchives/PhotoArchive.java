@@ -27,6 +27,7 @@ public class PhotoArchive {
   public String getName() { return name; }
 
   public PhotoList getPhotoList() { return photos; }
+  public PhotoList getPhotos() { return photos; }
 
   public String getArchivePath() { return imagesDirectory.getPath(); }
 
@@ -45,7 +46,7 @@ public class PhotoArchive {
       BufferedImage image = loadImageFromSource(newPhoto);
       newPhoto.setImageLocation(imagesDirectory.getPath());
       File imageInArchive = new File(newPhoto.getImageLocation());
-      ImageIO.write(image, "png", imageInArchive);
+      ImageIO.write(image, "jpeg", imageInArchive);
     } catch (IOException e) {
     }
   }

@@ -1,7 +1,6 @@
 package webserver;
 
-import photoarchives.PhotoArchive;
-import photoarchives.PhotoList;
+import photoarchives.*;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -16,6 +15,7 @@ public class Server {
 
   private static String archiveDir;
   private static PhotoArchive photoArchive;
+  private static Photo newPhoto;
   private static HandlebarsTemplateEngine templateEngine = new HandlebarsTemplateEngine();
 
   public static void main(String[] args) {
@@ -37,11 +37,17 @@ public class Server {
 
   private static Object showPhotoList(Request req, Response res) {
     // TODO: Get this displaying photos
-    archiveDir = "assets/public/image_archive";
+    archiveDir = "/tmp/image_archive";
     photoArchive = new PhotoArchive("Archive", archiveDir);
+    photoArchive.initialize();
+    newPhoto = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
+                               "/hananiah.jpeg");
+    newPhoto.addField(PhotoField.Kind.TITLE, "Nene");
+    newPhoto.addField(PhotoField.Kind.LOCATION, "Covenant Christian");
+    photoArchive.addPhoto(newPhoto);
     HashMap<Object, Object> returnedHash = new HashMap<>();
-    returnedHash.put("values", photoArchive);
-    return serveTemplate("/profilesList.handlebars", returnedHash);
+    returnedHash.put("photoArchive", photoArchive);
+    return serveTemplate("/PhotoList.handlebars", returnedHash);
   }
 
   private static String serveTemplate(String templatePath, HashMap<Object, Object> model) {
