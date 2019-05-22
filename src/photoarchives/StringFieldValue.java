@@ -1,6 +1,6 @@
 package photoarchives;
 
-public class StringFieldValue implements FieldValueInterface {
+public class StringFieldValue implements FieldValueInterface{
   private String value = null;
 
   public StringFieldValue(String value){

@@ -50,8 +50,8 @@ public class Server {
 
     newPhoto2 = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
                                "/haris.jpeg");
-    newPhoto2.addField(PhotoField.Kind.TITLE, "Haris");
-    newPhoto2.addField(PhotoField.Kind.LOCATION, "Greece");
+    newPhoto2.addField(PhotoField.Kind.TITLE, new StringFieldValue("Haris"));
+    newPhoto2.addField(PhotoField.Kind.LOCATION, new StringFieldValue("Greece"));
     photoArchive.addPhoto(newPhoto2);
 
     HashMap<Object, Object> returnedHash = new HashMap<>();

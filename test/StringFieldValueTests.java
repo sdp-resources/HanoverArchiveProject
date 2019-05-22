@@ -12,10 +12,6 @@ public class StringFieldValueTests {
   public void setup(){
     string = new StringFieldValue("");
   }
-  @Test
-  public void canCreateStringFieldValue(){
-    assertNull(string.get());
-  }
 
   @Test
   public void canChangeStringFieldValue(){
@@ -27,5 +23,4 @@ public class StringFieldValueTests {
   public void canChangeToStringFieldValue(){
     assertEquals(string.toString(), string.get());
   }
-
 }

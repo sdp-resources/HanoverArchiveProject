@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import photoarchives.*;
 import photoarchives.SortingComparators.*;
@@ -91,6 +92,7 @@ public class PhotoListTests {
     assertEquals("test source2", second.getSource());
   }
 
+  @Ignore
   @Test
   public void searchForDate_Value1991_ListOfSizeOne_ExpectOneInFinalList() {
     photo.addField(PhotoField.Kind.DATE, new StringFieldValue("1991"));
@@ -100,6 +102,7 @@ public class PhotoListTests {
     assertEquals("1991", test.get(0).getFieldValue(PhotoField.Kind.DATE));
   }
 
+  @Ignore
   @Test
   public void searchForDate_Value1991_ListOfSizeThree_ExpectTwoInFinalList() {
     addThreePhotosToList();
