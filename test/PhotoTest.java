@@ -1,8 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
-import photoarchives.Photo;
-import photoarchives.Field;
-import photoarchives.StringFieldValue;
+import photoarchives.*;
 
 import static junit.framework.TestCase.*;
 
@@ -18,22 +16,21 @@ public class PhotoTest {
   @Test
   public void createDefaultImage() {
     Photo p1 = new Photo();
-    assertEquals(null, p1.getSource());
-    assertEquals(null, p1.getID());
+    assertNull(p1.getSource());
+    assertNull(p1.getID());
     assertEquals(0, p1.getFields().size());
   }
 
   @Test
   public void createImageWithGivenSource() {
     assertEquals("source", photo.getSource());
-    assertEquals(null, photo.getID());
+    assertNull(photo.getID());
   }
-
 
   @Test
   public void setNewSource_ExpectChange() {
-   photo.setSource("/usr...");
-   assertEquals("/usr...", photo.getSource());
+    photo.setSource("/usr...");
+    assertEquals("/usr...", photo.getSource());
   }
 
   @Test
@@ -90,5 +87,25 @@ public class PhotoTest {
     photo.addField(Field.Kind.DESCRIPTION, new StringFieldValue("Test Description"));
     photo.addField(Field.Kind.SUBJECT, new StringFieldValue("CS"));
     assertFalse(photo.hasField(Field.Kind.TITLE));
+  }
+
+  @Test
+  public void addCategoryTests() {
+    photo.addCategory(Categories.BUILDING);
+    assertEquals(1, photo.getCategoriesAmount());
+  }
+
+  @Test
+  public void getCategoriesAmountTests() {
+    photo.getCategories();
+    assertEquals(0, photo.getCategoriesAmount());
+  }
+
+  @Test
+  public void getCategoriesTests(){
+    photo.addCategory(Categories.BUILDING);
+    photo.addCategory(Categories.CLASSROOM);
+    Categories cat = (Categories) photo.getCategories().get(0);
+    assertEquals("Building", cat.getName());
   }
 }

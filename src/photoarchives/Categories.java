@@ -11,4 +11,5 @@ public enum Categories {
   Categories(String category) { this.name = category; }
 
   public String getName() { return name; }
+
 }

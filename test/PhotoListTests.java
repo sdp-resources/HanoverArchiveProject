@@ -6,6 +6,7 @@ import photoarchives.SortingComparators.*;
 
 import java.util.Iterator;
 
+import static junit.framework.TestCase.assertSame;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -154,9 +155,9 @@ public class PhotoListTests {
   public void canSortPhotoListByTitle(){
     addThreePhotosToList();
     photoList.sort(new TitleSortingComparator());
-    assertTrue(photoList.get(0).getFieldValue(Field.Kind.TITLE) == "a");
-    assertTrue(photoList.get(1).getFieldValue(Field.Kind.TITLE) == "b");
-    assertTrue(photoList.get(2).getFieldValue(Field.Kind.TITLE) == "c");
+    assertSame("a", photoList.get(0).getFieldValue(Field.Kind.TITLE));
+    assertSame("b", photoList.get(1).getFieldValue(Field.Kind.TITLE));
+    assertSame("c", photoList.get(2).getFieldValue(Field.Kind.TITLE));
 
   }
   @Test
@@ -166,49 +167,46 @@ public class PhotoListTests {
     photo.addField(Field.Kind.DATE, new StringFieldValue("1950"));
     photoList.addPhoto(photo);
     photoList.sort(new DateSortingComparator());
-    assertTrue(photoList.get(0).getFieldValue(Field.Kind.DATE) == "1950");
-    assertTrue(photoList.get(1).getFieldValue(Field.Kind.DATE) == "1991");
-    assertTrue(photoList.get(2).getFieldValue(Field.Kind.DATE) == "1991");
-    assertTrue(photoList.get(3).getFieldValue(Field.Kind.DATE) == "2005");
+    assertSame("1950", photoList.get(0).getFieldValue(Field.Kind.DATE));
+    assertSame("1991", photoList.get(1).getFieldValue(Field.Kind.DATE));
+    assertSame("1991", photoList.get(2).getFieldValue(Field.Kind.DATE));
+    assertSame("2005", photoList.get(3).getFieldValue(Field.Kind.DATE));
 
   }
   @Test
   public void canSortPhotoListBySubject(){
     addThreePhotosToList();
     photoList.sort(new SubjectSortingComparator());
-    assertTrue(photoList.get(0).getFieldValue(Field.Kind.SUBJECT) == "CS");
-    assertTrue(photoList.get(1).getFieldValue(Field.Kind.SUBJECT) == "Math");
-    assertTrue(photoList.get(2).getFieldValue(Field.Kind.SUBJECT) == "Science");
+    assertSame("CS", photoList.get(0).getFieldValue(Field.Kind.SUBJECT));
+    assertSame("Math", photoList.get(1).getFieldValue(Field.Kind.SUBJECT));
+    assertSame("Science", photoList.get(2).getFieldValue(Field.Kind.SUBJECT));
 
   }
   @Test
   public void canSortPhotoListByHanover_Subject(){
     addThreePhotosToList();
     photoList.sort(new HanoverSubjectSortingComparator());
-    assertTrue(photoList.get(0).getFieldValue(Field.Kind.HANOVER_SUBJECT) == "CS");
-    assertTrue(photoList.get(1).getFieldValue(Field.Kind.HANOVER_SUBJECT) == "Math");
-    assertTrue(photoList.get(2).getFieldValue(Field.Kind.HANOVER_SUBJECT) == "Science");
+    assertSame("CS", photoList.get(0).getFieldValue(Field.Kind.HANOVER_SUBJECT));
+    assertSame("Math", photoList.get(1).getFieldValue(Field.Kind.HANOVER_SUBJECT));
+    assertSame("Science", photoList.get(2).getFieldValue(Field.Kind.HANOVER_SUBJECT));
 
   }
   @Test
   public void canSortPhotoListByLocation(){
     addThreePhotosToList();
     photoList.sort(new LocationSortingComparator());
-    assertTrue(photoList.get(0).getFieldValue(Field.Kind.LOCATION) == "CC");
-    assertTrue(photoList.get(1).getFieldValue(Field.Kind.LOCATION) == "Lynn");
-    assertTrue(photoList.get(2).getFieldValue(Field.Kind.LOCATION) == "Wiley");
+    assertSame("CC", photoList.get(0).getFieldValue(Field.Kind.LOCATION));
+    assertSame("Lynn", photoList.get(1).getFieldValue(Field.Kind.LOCATION));
+    assertSame("Wiley", photoList.get(2).getFieldValue(Field.Kind.LOCATION));
 
   }
   @Test
   public void canSortPhotoListByCollectionName(){
     addThreePhotosToList();
     photoList.sort(new CollectionNameSortingComparator());
-    assertTrue(photoList.get(0).getFieldValue(Field.Kind.COLLECTION_NAME) == "Collection");
-    assertTrue(photoList.get(1).getFieldValue(Field.Kind.COLLECTION_NAME) == "Name");
-    assertTrue(photoList.get(2).getFieldValue(Field.Kind.COLLECTION_NAME) == "Test");
+    assertSame("Collection", photoList.get(0).getFieldValue(Field.Kind.COLLECTION_NAME));
+    assertSame("Name", photoList.get(1).getFieldValue(Field.Kind.COLLECTION_NAME));
+    assertSame("Test", photoList.get(2).getFieldValue(Field.Kind.COLLECTION_NAME));
 
   }
-
-
-
 }

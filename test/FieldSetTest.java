@@ -12,9 +12,9 @@ public class FieldSetTest {
 
   private FieldSet fields;
 
-  Field field1;
-  Field field2;
-  Field field3;
+  private Field field1;
+  private Field field2;
+  private Field field3;
 
   @Before
   public void setUp() throws Exception {

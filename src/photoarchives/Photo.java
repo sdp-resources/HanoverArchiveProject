@@ -16,6 +16,7 @@ public class Photo {
     this.id = null;
     this.fields = new FieldSet();
     this.imageLocation = null;
+    this.categories = new ArrayList<>();
   }
 
   public Photo(String source) {
@@ -23,6 +24,7 @@ public class Photo {
     this.id = null;
     this.fields = new FieldSet();
     this.imageLocation = null;
+    this.categories = new ArrayList<>();
   }
 
   public void addField(Field.Kind kind, FieldValueInterface value) {
@@ -53,11 +55,23 @@ public class Photo {
     return imageLocation;
   }
 
+  public void addCategory(Categories category){
+    categories.add(category);
+  }
+
   public String getTitle() {return getFieldValue(Field.Kind.TITLE);}
 
   public String getLocation() {return getFieldValue(Field.Kind.LOCATION);}
 
   public String getImgURL() {return "file://" + imageLocation;}
+
+  public ArrayList getCategories(){
+    return categories;
+  }
+
+  public int getCategoriesAmount(){
+    return categories.size();
+  }
 
   public void setSource(String s) {
     this.source = s;
