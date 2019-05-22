@@ -38,7 +38,7 @@ public class PhotoList implements Iterable<Photo>{
   public void sort(Comparator SortingComparator){
     Collections.sort(photoList, SortingComparator);
   }
-  
+
   public Iterator<Photo> iterator() {
     PhotoListIterator = photoList.iterator();
     return PhotoListIterator;

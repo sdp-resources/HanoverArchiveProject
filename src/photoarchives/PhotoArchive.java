@@ -17,17 +17,9 @@ public class PhotoArchive {
     this.imagesDirectory = new File(directory);
   }
 
-  public void initialize() {
-    if (!imagesDirectory.exists())
-    {
-      imagesDirectory.mkdir();
-    }
-  }
-
   public String getName() { return name; }
 
   public PhotoList getPhotoList() { return photos; }
-  public PhotoList getPhotos() { return photos; }
 
   public String getArchivePath() { return imagesDirectory.getPath(); }
 
@@ -37,6 +29,10 @@ public class PhotoArchive {
 
   public void setName(String newName) {
     this.name = newName;
+  }
+
+  public void clear() {
+    this.photos.clear();
   }
 
   public void addPhoto(Photo newPhoto) {
@@ -51,11 +47,6 @@ public class PhotoArchive {
     }
   }
 
-  public void addPhoto(String url) {
-    Photo newPhoto = new Photo(url);
-    addPhoto(newPhoto);
-  }
-
   private String createUniqueIdForUploadedPhoto() {
     return UUID.randomUUID().toString();
   }
@@ -64,7 +55,15 @@ public class PhotoArchive {
     return ImageIO.read(new URL(newPhoto.getSource()));
   }
 
-  public void clear() {
-    this.photos.clear();
+  public void addURLPhoto(String url) {
+    Photo newPhoto = new Photo(url);
+    addPhoto(newPhoto);
+  }
+
+  public void initialize() {
+    if (!imagesDirectory.exists())
+    {
+      imagesDirectory.mkdir();
+    }
   }
 }
