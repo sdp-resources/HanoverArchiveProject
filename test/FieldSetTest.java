@@ -32,13 +32,13 @@ public class FieldSetTest {
   @Test
   public void setOfSizeOneIsNotEmpty() {
     fields.add(field1);
-    checkThatSetIsEmpty();
+    checkThatSetIsNotEmpty();
   }
 
   @Test
   public void setOfSizeThreeIsNotEmpty() {
     addThreeFieldsToSet();
-    checkThatSetIsEmpty();
+    checkThatSetIsNotEmpty();
   }
 
   @Test
@@ -166,7 +166,7 @@ public class FieldSetTest {
     fields.add(field3);
   }
 
-  private void checkThatSetIsEmpty() {
+  private void checkThatSetIsNotEmpty() {
     assertFalse(fields.isEmpty());
   }
 }
