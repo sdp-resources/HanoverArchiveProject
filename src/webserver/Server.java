@@ -42,8 +42,8 @@ public class Server {
     photoArchive.initialize();
     newPhoto = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
                                "/hananiah.jpeg");
-    newPhoto.addField(PhotoField.Kind.TITLE, "Nene");
-    newPhoto.addField(PhotoField.Kind.LOCATION, "Covenant Christian");
+    newPhoto.addField(PhotoField.Kind.TITLE, new StringFieldValue("Nene"));
+    newPhoto.addField(PhotoField.Kind.LOCATION, new StringFieldValue("Covenant Christian"));
     photoArchive.addPhoto(newPhoto);
     HashMap<Object, Object> returnedHash = new HashMap<>();
     returnedHash.put("photoArchive", photoArchive);
