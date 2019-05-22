@@ -44,29 +44,29 @@ public class Photo {
     this.imageLocation = imageDir + "/" + id + ".jpeg";
   }
 
-  public void addField(PhotoField.Kind kind, FieldValueInterface value) {
-    fields.add(new PhotoField(kind, value));
+  public void addField(Field.Kind kind, FieldValueInterface value) {
+    fields.add(new Field(kind, value));
   }
 
   public String getImageLocation() {
     return imageLocation;
   }
 
-  public String getFieldValue(PhotoField.Kind kind) {
+  public String getFieldValue(Field.Kind kind) {
     return fields.getFieldValue(kind);
   }
 
-  public void setFieldValue(PhotoField.Kind kind, String newValue) {
+  public void setFieldValue(Field.Kind kind, String newValue) {
     fields.setFieldValue(kind, newValue);
   }
 
-  public boolean hasField(PhotoField.Kind kind) {
+  public boolean hasField(Field.Kind kind) {
     return fields.contains(kind);
   }
 
-  public String getTitle() {return getFieldValue(PhotoField.Kind.TITLE);}
+  public String getTitle() {return getFieldValue(Field.Kind.TITLE);}
 
-  public String getLocation() {return getFieldValue(PhotoField.Kind.LOCATION);}
+  public String getLocation() {return getFieldValue(Field.Kind.LOCATION);}
 
   public String getImgURL() {return "file://" + imageLocation;}
 

@@ -1,16 +1,16 @@
 package photoarchives;
 
-public class PhotoField {
+public class Field {
 
   private Kind kind;
   private FieldValueInterface value;
 
-  public PhotoField(Kind kind,FieldValueInterface value) {
+  public Field(Kind kind, FieldValueInterface value) {
     this.value = value;
     this.kind =  kind;
   }
 
-  public PhotoField(){
+  public Field(){
     this.kind = Kind.NONE;
     this.value = null;
   }

@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import photoarchives.PhotoField;
+import photoarchives.Field;
 import photoarchives.StringFieldValue;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -10,17 +10,17 @@ import static org.junit.Assert.assertEquals;
 
 public class EditFieldTests {
 
-  private PhotoField field;
+  private Field field;
 
   @Before
   public void setUp() {
-    field = new PhotoField();
+    field = new Field();
   }
 
   @Test
   public void TestGetName() {
-    field.setKind(PhotoField.Kind.DATE);
-    assertThat(field.getKind(), is(PhotoField.Kind.DATE));
+    field.setKind(Field.Kind.DATE);
+    assertThat(field.getKind(), is(Field.Kind.DATE));
     assertThat(field.getKind().getName(), is("Date"));
   }
 
@@ -40,21 +40,21 @@ public class EditFieldTests {
   @Ignore
   @Test
   public void canCreateEmptyField_ExpectEmptyStringAndNONEField(){
-    PhotoField newField = new PhotoField();
+    Field newField = new Field();
     assertThat(newField.getValue(), is(""));
-    assertThat(newField.getKind(), is(PhotoField.Kind.NONE));
+    assertThat(newField.getKind(), is(Field.Kind.NONE));
   }
 
   @Test
   public void canCreateField_GivenKindValuePair(){
-    PhotoField newField = new PhotoField(PhotoField.Kind.DATE, new StringFieldValue("1999"));
+    Field newField = new Field(Field.Kind.DATE, new StringFieldValue("1999"));
     assertThat(newField.getValue(), is("1999"));
-    assertThat(newField.getKind(), is (PhotoField.Kind.DATE));
+    assertThat(newField.getKind(), is (Field.Kind.DATE));
   }
 
   @Test
   public void testSetKindMethod_ExpectChange(){
-    field.setKind(PhotoField.Kind.LOCATION);
-    assertEquals(PhotoField.Kind.LOCATION, field.getKind());
+    field.setKind(Field.Kind.LOCATION);
+    assertEquals(Field.Kind.LOCATION, field.getKind());
   }
 }

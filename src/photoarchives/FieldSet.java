@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class FieldSet implements Iterable<PhotoField>{
-  private Set<PhotoField> fields = new HashSet<>();
+public class FieldSet implements Iterable<Field>{
+  private Set<Field> fields = new HashSet<>();
 
   public boolean isEmpty() {
     return fields.isEmpty();
   }
 
-  public void add(PhotoField field) {
+  public void add(Field field) {
     fields.add(field);
   }
 
@@ -19,8 +19,8 @@ public class FieldSet implements Iterable<PhotoField>{
     return fields.size();
   }
 
-  public void remove(PhotoField.Kind kind) {
-    for(PhotoField field : fields) {
+  public void remove(Field.Kind kind) {
+    for(Field field : fields) {
       if(hasMatchingKind(kind, field)) {
         fields.remove(field);
         break;
@@ -28,8 +28,8 @@ public class FieldSet implements Iterable<PhotoField>{
     }
   }
 
-  public boolean contains(PhotoField.Kind kind) {
-    for(PhotoField field : fields) {
+  public boolean contains(Field.Kind kind) {
+    for(Field field : fields) {
       if(hasMatchingKind(kind, field)) {
         return true;
       }
@@ -37,8 +37,8 @@ public class FieldSet implements Iterable<PhotoField>{
     return false;
   }
 
-  public String getFieldValue(PhotoField.Kind kind) {
-    for (PhotoField field : fields) {
+  public String getFieldValue(Field.Kind kind) {
+    for (Field field : fields) {
       if (hasMatchingKind(kind, field)) {
         return field.getValue();
       }
@@ -46,19 +46,19 @@ public class FieldSet implements Iterable<PhotoField>{
     return "~";
   }
 
-  public void setFieldValue(PhotoField.Kind kind, String newValue) {
-    for (PhotoField field : fields) {
+  public void setFieldValue(Field.Kind kind, String newValue) {
+    for (Field field : fields) {
       if (hasMatchingKind(kind, field)) {
         field.setValue(newValue);
       }
     }
   }
 
-  private boolean hasMatchingKind(PhotoField.Kind kind, PhotoField field) {
+  private boolean hasMatchingKind(Field.Kind kind, Field field) {
     return field.getKind() == kind;
   }
 
-  public Iterator<PhotoField> iterator() {
+  public Iterator<Field> iterator() {
     return fields.iterator();
   }
 }

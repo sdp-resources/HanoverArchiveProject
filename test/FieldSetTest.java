@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import photoarchives.FieldSet;
-import photoarchives.PhotoField;
+import photoarchives.Field;
 import photoarchives.StringFieldValue;
 
 import java.util.Iterator;
@@ -12,16 +12,16 @@ public class FieldSetTest {
 
   private FieldSet fields;
 
-  PhotoField field1;
-  PhotoField field2;
-  PhotoField field3;
+  Field field1;
+  Field field2;
+  Field field3;
 
   @Before
   public void setUp() throws Exception {
     fields = new FieldSet();
-    field1 = new PhotoField(PhotoField.Kind.DATE, new StringFieldValue("1991"));
-    field2 = new PhotoField(PhotoField.Kind.DESCRIPTION, new StringFieldValue("Test Description"));
-    field3 = new PhotoField(PhotoField.Kind.SUBJECT, new StringFieldValue("CS"));
+    field1 = new Field(Field.Kind.DATE, new StringFieldValue("1991"));
+    field2 = new Field(Field.Kind.DESCRIPTION, new StringFieldValue("Test Description"));
+    field3 = new Field(Field.Kind.SUBJECT, new StringFieldValue("CS"));
   }
 
   @Test
@@ -61,87 +61,87 @@ public class FieldSetTest {
   @Test
   public void checkThatFieldRemoveWorksWithOneField() {
     fields.add(field1);
-    fields.remove(PhotoField.Kind.DATE);
+    fields.remove(Field.Kind.DATE);
     assertTrue(fields.isEmpty());
   }
 
   @Test
   public void checkThatFieldRemoveWorksWithThreeFields() {
     addThreeFieldsToSet();
-    fields.remove(PhotoField.Kind.DATE); fields.remove(PhotoField.Kind.DESCRIPTION); fields.remove(
-          PhotoField.Kind.SUBJECT);
+    fields.remove(Field.Kind.DATE); fields.remove(Field.Kind.DESCRIPTION); fields.remove(
+          Field.Kind.SUBJECT);
     assertTrue(fields.isEmpty());
   }
 
   @Test
   public void checkRemovingFieldFromMiddleOfSet() {
     addThreeFieldsToSet();
-    fields.remove(PhotoField.Kind.DESCRIPTION);
+    fields.remove(Field.Kind.DESCRIPTION);
     assertTrue(fields.size() == 2);
   }
 
   @Test
   public void checkRemovingFieldFromEndOfSet() {
     addThreeFieldsToSet();
-    fields.remove(PhotoField.Kind.SUBJECT);
+    fields.remove(Field.Kind.SUBJECT);
     assertTrue(fields.size() == 2);
   }
 
   @Test
   public void checkForSecondFieldInSet_ReturnsTrue() {
     fields.add(field1); fields.add(field2);
-    assertTrue(fields.contains(PhotoField.Kind.DESCRIPTION));
+    assertTrue(fields.contains(Field.Kind.DESCRIPTION));
   }
 
   @Test
   public void checkForFirstFieldInSet_ReturnsTrue() {
     fields.add(field1); fields.add(field2);
-    assertTrue(fields.contains(PhotoField.Kind.DATE));
+    assertTrue(fields.contains(Field.Kind.DATE));
   }
 
   @Test
   public void checkForSpecificFieldInSet_ReturnsFalse() {
     fields.add(field1); fields.add(field2);
-    assertFalse(fields.contains(PhotoField.Kind.SUBJECT));
+    assertFalse(fields.contains(Field.Kind.SUBJECT));
   }
 
   @Test
   public void getFieldValue_OneFieldInSet() {
     fields.add(field1);
-    assertEquals("1991", fields.getFieldValue(PhotoField.Kind.DATE));
+    assertEquals("1991", fields.getFieldValue(Field.Kind.DATE));
   }
 
   @Test
   public void getFieldValue_ThreeFieldsInSet() {
     addThreeFieldsToSet();
-    assertEquals("Test Description", fields.getFieldValue(PhotoField.Kind.DESCRIPTION));
+    assertEquals("Test Description", fields.getFieldValue(Field.Kind.DESCRIPTION));
   }
 
   @Test
   public void getFieldValue_FieldSetDoesntContainFieldKind() {
     addThreeFieldsToSet();
-    assertEquals("~", fields.getFieldValue(PhotoField.Kind.TITLE));
+    assertEquals("~", fields.getFieldValue(Field.Kind.TITLE));
   }
 
   @Test
   public void setFieldValueExpectFieldValueToChange() {
     fields.add(field1);
-    fields.setFieldValue(PhotoField.Kind.DATE, "2000");
-    assertEquals("2000", fields.getFieldValue(PhotoField.Kind.DATE));
+    fields.setFieldValue(Field.Kind.DATE, "2000");
+    assertEquals("2000", fields.getFieldValue(Field.Kind.DATE));
   }
 
   @Test
   public void setFieldValueThreeFieldsChangeValueOfMiddle() {
     addThreeFieldsToSet();
-    fields.setFieldValue(PhotoField.Kind.DESCRIPTION, "New Description");
-    assertEquals("New Description", fields.getFieldValue(PhotoField.Kind.DESCRIPTION));
+    fields.setFieldValue(Field.Kind.DESCRIPTION, "New Description");
+    assertEquals("New Description", fields.getFieldValue(Field.Kind.DESCRIPTION));
   }
 
   @Test
   public void iteratorIteratesThroughSetOfOne() {
     int acc = 0;
     fields.add(field1);
-    Iterator<PhotoField> itr = fields.iterator();
+    Iterator<Field> itr = fields.iterator();
     while(itr.hasNext()) {
       acc++;
       itr.next();
@@ -152,7 +152,7 @@ public class FieldSetTest {
   public void iteratorIteratesThroughSetOfThree() {
     int acc = 0;
     addThreeFieldsToSet();
-    Iterator<PhotoField> itr = fields.iterator();
+    Iterator<Field> itr = fields.iterator();
     while(itr.hasNext()) {
       acc++;
       itr.next();
