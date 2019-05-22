@@ -5,14 +5,13 @@ import java.util.Scanner;
 public class SimpleDemo  {
   public static final String ARCHIVE_NAME = "Hanover Photo Archive";
   public static final String IMAGE_DIR = "assets/public/image_archive";
-  //public static final String IMAGE_DIR = "/tmp/image_archive";
   public static PhotoArchive photoArchive = new PhotoArchive(ARCHIVE_NAME, IMAGE_DIR);
 
 
   public void runDemo() {
     photoArchive.initialize();
     System.out.println(ARCHIVE_NAME + " created!");
-    addHanoverLogo();
+    addHananiah();
     System.out.println("\nCurrent Archive:\n");
     printPhotoList();
     //System.out.println("Our Archive has " + photoArchive.getPhotoList().getLength() + " photo!");
@@ -48,6 +47,11 @@ public class SimpleDemo  {
   public void addHanoverLogo() {
     Photo photo = new Photo("https://www.hanover.edu/images/site/logos/logo.png");
     photo.addField(Field.Kind.TITLE, new StringFieldValue("Hanover College Logo"));
+    photoArchive.addPhoto(photo);
+
+  } public void addHananiah() {
+    Photo photo = new Photo("assets/public/hananiah.jpeg");
+    photo.addField(Field.Kind.TITLE, new StringFieldValue("Hananiah, Age 15"));
     photoArchive.addPhoto(photo);
   }
 
