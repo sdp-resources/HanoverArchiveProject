@@ -4,13 +4,15 @@ import java.util.Scanner;
 
 public class SimpleDemo  {
   public static final String ARCHIVE_NAME = "Hanover Photo Archive";
-  public static final String IMAGE_DIR = "/tmp/image_archive";
+  public static final String IMAGE_DIR = "assets/public/image_archive";
+  //public static final String IMAGE_DIR = "/tmp/image_archive";
   public static PhotoArchive photoArchive = new PhotoArchive(ARCHIVE_NAME, IMAGE_DIR);
+
 
   public void runDemo() {
     photoArchive.initialize();
     System.out.println(ARCHIVE_NAME + " created!");
-    addPhotoFromUser();
+    addHanoverLogo();
     System.out.println("\nCurrent Archive:\n");
     printPhotoList();
     //System.out.println("Our Archive has " + photoArchive.getPhotoList().getLength() + " photo!");
@@ -29,8 +31,8 @@ public class SimpleDemo  {
 
   public void printPhotoList() {
     for (Photo photo : photoArchive.getPhotoList()) {
-      System.out.print("photo id: " + photo.getID() + " ");
-      System.out.print("title: " + photo.getFieldValue(Field.Kind.TITLE) + " ");
+      System.out.println("photo id: " + photo.getID());
+      System.out.println("title: " + photo.getFieldValue(Field.Kind.TITLE));
       System.out.println("image location: " + photo.getImageLocation());
     }
   }
@@ -41,6 +43,12 @@ public class SimpleDemo  {
     while (scanner.hasNextLine()) {
 
     }
+  }
+
+  public void addHanoverLogo() {
+    Photo photo = new Photo("https://www.hanover.edu/images/site/logos/logo.png");
+    photo.addField(Field.Kind.TITLE, new StringFieldValue("Hanover College Logo"));
+    photoArchive.addPhoto(photo);
   }
 
   public void addPhotoFromUser() {

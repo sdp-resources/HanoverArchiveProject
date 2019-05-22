@@ -38,7 +38,7 @@ public class Server {
 
   private static Object showPhotoList(Request req, Response res) {
     // TODO: Get this displaying photos
-    archiveDir = "/tmp/image_archive";
+    archiveDir = "assets/public/image_archive";
     photoArchive = new PhotoArchive("Archive", archiveDir);
     photoArchive.initialize();
 
