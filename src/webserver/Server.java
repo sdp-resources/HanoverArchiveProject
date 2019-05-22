@@ -16,6 +16,7 @@ public class Server {
   private static String archiveDir;
   private static PhotoArchive photoArchive;
   private static Photo newPhoto;
+  private static Photo newPhoto2;
   private static HandlebarsTemplateEngine templateEngine = new HandlebarsTemplateEngine();
 
   public static void main(String[] args) {
@@ -40,11 +41,19 @@ public class Server {
     archiveDir = "/tmp/image_archive";
     photoArchive = new PhotoArchive("Archive", archiveDir);
     photoArchive.initialize();
+
     newPhoto = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
                                "/hananiah.jpeg");
     newPhoto.addField(PhotoField.Kind.TITLE, new StringFieldValue("Nene"));
     newPhoto.addField(PhotoField.Kind.LOCATION, new StringFieldValue("Covenant Christian"));
     photoArchive.addPhoto(newPhoto);
+
+    newPhoto2 = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
+                               "/haris.jpeg");
+    newPhoto2.addField(PhotoField.Kind.TITLE, "Haris");
+    newPhoto2.addField(PhotoField.Kind.LOCATION, "Greece");
+    photoArchive.addPhoto(newPhoto2);
+
     HashMap<Object, Object> returnedHash = new HashMap<>();
     returnedHash.put("photoArchive", photoArchive);
     return serveTemplate("/PhotoList.handlebars", returnedHash);
