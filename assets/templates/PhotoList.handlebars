@@ -1,17 +1,23 @@
 <html>
+<head>
+    <link rel="stylesheet" href="CSS/PhotoList.css">
+</head>
 <body>
-  <table>
-  {{#with photoArchive}}
-  {{#each photos}}
-    <tr>
-      <td>
-          <img src="{{imgURL}}">
-      </td>
-      <td>{{title}}</td>
-      <td>{{location}}</td>
-    </tr>
-  {{/each}}
-  {{/with}}
-  </table>
+<header>I hate my group members!</header>
+<table>
+    {{#with photoArchive}}
+        {{#each photos}}
+            <tr>
+                <td>
+                    <a href="http://localhost:63342/HanoverArchiveProject/public/Static%20Web%20Page.html?_ijt=tl37ofa29bvthqcut44ejgt554">
+                        <img src="{{imgURL}}" alt="Picture">
+                    </a>
+                </td>
+                <td>{{title}}</td>
+                <td>{{location}}</td>
+            </tr>
+        {{/each}}
+    {{/with}}
+</table>
 </body>
 </html>

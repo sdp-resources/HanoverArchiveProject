@@ -24,6 +24,7 @@ public class Server {
     get("/", Server::serveIndex);
     post("/login", Server::processLogin);
     get("/photos", Server::showPhotoList);
+//    get("/photoDetails", Server:showPhotoDetails);
   }
 
   private static Object serveIndex(Request req, Response res) {
@@ -58,6 +59,18 @@ public class Server {
     returnedHash.put("photoArchive", photoArchive);
     return serveTemplate("/PhotoList.handlebars", returnedHash);
   }
+
+//  private static Object showPhotoDetails(Request req, Response res) {
+//    archiveDir = "/tmp/image_archive";
+//    photoArchive = new PhotoArchive("Archive", archiveDir);
+//    photoArchive.initialize();
+//
+//    newPhoto = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
+//                               "/hananiah.jpeg");
+//    newPhoto.addField(PhotoField.Kind.TITLE, new StringFieldValue("Nae Nae"));
+//    newPhoto.addField(PhotoField.Kind.LOCATION, new StringFieldValue("Covenant Christian"));
+//    photoArchive.addPhoto(newPhoto);
+//  }
 
   private static String serveTemplate(String templatePath, HashMap<Object, Object> model) {
     return templateEngine.render(new ModelAndView(model, templatePath));
