@@ -1,7 +1,7 @@
 package photoarchives;
 
 public class StringFieldValue implements FieldValueInterface{
-  private String value = null;
+  private String value;
 
   public StringFieldValue(String value){
     this.value = value;

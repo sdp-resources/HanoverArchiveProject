@@ -1,5 +1,7 @@
 package photoarchives;
 
+import java.util.ArrayList;
+
 public class Photo {
 
   private String source;
@@ -7,6 +9,7 @@ public class Photo {
   private FieldSet fields;
   private String imageLocation;
   private static final String IMAGE_PREFIX = "image_";
+  private ArrayList<Categories> categories;
 
   public Photo() {
     this.source = null;
