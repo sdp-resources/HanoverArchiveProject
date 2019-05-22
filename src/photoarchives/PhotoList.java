@@ -9,18 +9,13 @@ public class PhotoList implements Iterable<Photo>{
     photoList = new ArrayList<>();
   }
 
-  public Iterator<Photo> iterator() {
-    PhotoListIterator = photoList.iterator();
-    return PhotoListIterator;
-  }
-
-  public int getLength() { return photoList.size(); }
-
   public void addPhoto(Photo photo) { photoList.add(photo); }
 
   public void removePhoto(Photo photo) { photoList.remove(photo); }
 
   public void clear() { photoList.clear(); }
+
+  public int getLength() { return photoList.size(); }
 
   public Photo get(int i) { return photoList.get(i); }
 
@@ -30,7 +25,7 @@ public class PhotoList implements Iterable<Photo>{
     {
       if (hasMatchingFieldValue(photo, kind, value))
       {
-          searchedList.addPhoto(photo);
+        searchedList.addPhoto(photo);
       }
     }
     return searchedList;
@@ -39,8 +34,14 @@ public class PhotoList implements Iterable<Photo>{
   private boolean hasMatchingFieldValue(Photo photo, Field.Kind kind, StringFieldValue value) {
     return photo.hasField(kind) && photo.getFieldValue(kind).equals(value);
   }
+
   public void sort(Comparator SortingComparator){
     Collections.sort(photoList, SortingComparator);
+  }
+  
+  public Iterator<Photo> iterator() {
+    PhotoListIterator = photoList.iterator();
+    return PhotoListIterator;
   }
 }
 

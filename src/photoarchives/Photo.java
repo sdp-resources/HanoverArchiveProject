@@ -22,6 +22,14 @@ public class Photo {
     this.imageLocation = null;
   }
 
+  public void addField(Field.Kind kind, FieldValueInterface value) {
+    fields.add(new Field(kind, value));
+  }
+
+  public boolean hasField(Field.Kind kind) {
+    return fields.contains(kind);
+  }
+
   public String getSource() {
     return this.source;
   }
@@ -30,38 +38,16 @@ public class Photo {
     return this.id;
   }
 
-  public void setSource(String s) {
-    this.source = s;
-  }
-
-  public void setID(String newID) { this.id = IMAGE_PREFIX + newID; }
-
   public FieldSet getFields() {
     return fields;
-  }
-
-  public void setImageLocation(String imageDir) {
-    this.imageLocation = imageDir + "/" + id + ".jpeg";
-  }
-
-  public void addField(Field.Kind kind, FieldValueInterface value) {
-    fields.add(new Field(kind, value));
-  }
-
-  public String getImageLocation() {
-    return imageLocation;
   }
 
   public String getFieldValue(Field.Kind kind) {
     return fields.getFieldValue(kind);
   }
 
-  public void setFieldValue(Field.Kind kind, String newValue) {
-    fields.setFieldValue(kind, newValue);
-  }
-
-  public boolean hasField(Field.Kind kind) {
-    return fields.contains(kind);
+  public String getImageLocation() {
+    return imageLocation;
   }
 
   public String getTitle() {return getFieldValue(Field.Kind.TITLE);}
@@ -69,5 +55,19 @@ public class Photo {
   public String getLocation() {return getFieldValue(Field.Kind.LOCATION);}
 
   public String getImgURL() {return "file://" + imageLocation;}
+
+  public void setSource(String s) {
+    this.source = s;
+  }
+
+  public void setID(String newID) { this.id = IMAGE_PREFIX + newID; }
+
+  public void setFieldValue(Field.Kind kind, String newValue) {
+    fields.setFieldValue(kind, newValue);
+  }
+
+  public void setImageLocation(String imageDir) {
+    this.imageLocation = imageDir + "/" + id + ".jpeg";
+  }
 
 }

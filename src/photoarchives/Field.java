@@ -19,12 +19,12 @@ public class Field {
     return value.get();
   }
 
-  public void setValue(String value) {
-    this.value.add(value);
-  }
-
   public Kind getKind() {
     return kind;
+  }
+
+  public void setValue(String value) {
+    this.value.add(value);
   }
 
   public void setKind(Kind kind) {
