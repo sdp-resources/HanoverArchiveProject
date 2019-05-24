@@ -24,8 +24,8 @@ public class Server {
     get("/photos", Server::showPhotoList);
     get("/upload", Server::getUploadForm);
     post("/upload", Server::uploadPhoto);
-    get("/labelphoto", Server::getPhotoLabelForm);
-    post("/labelphoto", Server::photoLabel);
+    get("/showphoto", Server::showPhoto);
+    //post("/labelphoto", Server::photoLabel);
 
     setupArchive();
     populateArchive();
@@ -49,19 +49,22 @@ public class Server {
     return serveTemplate("/PhotoList.handlebars", returnedHash);
   }
 
-  private static Object getPhotoLabelForm(Request req, Response res) {
-    return serveTemplate("/LabelPhoto.handlebars", new HashMap<>());
+  private static Object showPhoto(Request req, Response res) {
+    HashMap<Object, Object> returnedHash = new HashMap<>();
+    PhotoList photos = photoArchive.getPhotoList();
+    returnedHash.put("photo", photos.get(0));
+    return serveTemplate("/ShowPhoto.handlebars", returnedHash);
   }
 
-  private static Object photoLabel(Request req, Response res) {
-    String titleLabel = req.queryParams("title");
-    String descriptionLabel = req.queryParams("description");
-    String dateLabel = req.queryParams("date");
-    String subjectLabel = req.queryParams("subject");
-    String hanoverSubjectLabel = req.queryParams("hanover subject");
-    String locationLabel = req.queryParams("location");
-    
-  }
+//  private static Object photoLabel(Request req, Response res) {
+//    String titleLabel = req.queryParams("title");
+//    String descriptionLabel = req.queryParams("description");
+//    String dateLabel = req.queryParams("date");
+//    String subjectLabel = req.queryParams("subject");
+//    String hanoverSubjectLabel = req.queryParams("hanover subject");
+//    String locationLabel = req.queryParams("location");
+//    Field exampleTitle = new Field(titleLabel, archiveDir);
+//  }
 
   private static Object getUploadForm(Request req, Response res) {
     return serveTemplate("/UploadPhoto.handlebars", new HashMap<>());

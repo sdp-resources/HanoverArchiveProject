@@ -1,0 +1,31 @@
+<html>
+<body>
+<p>Image File (will eventually show photo): image_archive/{{imageFilename}}</p>
+<form method="post" action="/addDataToPhoto">
+  <table>
+<tr>
+   <td>Title:</td> <td>{{title}}</td> <td><input type="text" name="title" placeholder="title"></td>
+</tr>
+<tr>
+  <td>Description:</td> <td>{{description}}</td><td><input type="text" name="description" placeholder="description"></td>
+</tr>
+<tr>
+  <td>Date:</td> <td>{{date}}</td><td><input type="text" name="date" placeholder="date"></td>
+</tr>
+<tr>
+  <td>Subject:</td> <td>{{subject}}</td><td><input type="text" name="subject" placeholder="subject"></td>
+</tr>
+<tr>
+  <td>Hanover Subject:</td> <td>{{hanover_subject}}</td><td><input type="text" name="hanover subject" placeholder="hanover subject"></td>
+</tr>
+<tr>
+  <td>Location:</td> <td>{{location}}</td><td><input type="text" name="location" placeholder="location"></td>
+</tr>
+  </table>
+
+  <p><input type="submit" value="Submit" class="btn float-right login_btn"></p>
+
+
+</form>
+</body>
+</html>
