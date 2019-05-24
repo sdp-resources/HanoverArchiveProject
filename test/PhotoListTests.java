@@ -97,58 +97,6 @@ public class PhotoListTests {
   }
 
   @Test
-  public void searchForDate_Value1991_ListOfSizeOne_ExpectOneInFinalList() {
-    photo.addField(Field.Kind.DATE, "1991");
-    photoList.addPhoto(photo);
-    PhotoList test = photoList.search(Field.Kind.DATE, "1991");
-    assertEquals(1, test.getLength());
-    assertEquals("1991", test.get(0).getFieldValue(Field.Kind.DATE));
-  }
-
-  @Test
-  public void searchForDate_Value1991_ListOfSizeThree_ExpectTwoInFinalList() {
-    addThreePhotosToList();
-    PhotoList test = photoList.search(Field.Kind.DATE, "1991");
-    assertEquals(2, test.getLength());
-    assertEquals("1991", test.get(0).getFieldValue(Field.Kind.DATE));
-    assertEquals("1991", test.get(1).getFieldValue(Field.Kind.DATE));
-  }
-
-  @Test
-  public void searchForDate_Value1991_ListOfSizeThree_NoSuchFieldValue() {
-    addThreePhotosToList();
-    PhotoList test = photoList.search(Field.Kind.DATE, "2020");
-    assertEquals(0, test.getLength());
-  }
-
-  private void addThreePhotosToList() {
-    Photo p1 = new Photo(url1, "/tmp");
-    Photo p2 = new Photo(url2, "/tmp") ;
-    Photo p3 = new Photo(url3, "/tmp");
-    photoList.addPhoto(p1);
-    photoList.addPhoto(p2);
-    photoList.addPhoto(p3);
-    p1.addField(Field.Kind.DATE, "1991");
-    p2.addField(Field.Kind.DATE, "1991");
-    p3.addField(Field.Kind.DATE, "2005");
-    p1.addField(Field.Kind.TITLE, "b");
-    p2.addField(Field.Kind.TITLE, "c");
-    p3.addField(Field.Kind.TITLE, "a");
-    p1.addField(Field.Kind.SUBJECT, "Math");
-    p2.addField(Field.Kind.SUBJECT, "CS");
-    p3.addField(Field.Kind.SUBJECT, "Science");
-    p1.addField(Field.Kind.HANOVER_SUBJECT, "Math");
-    p2.addField(Field.Kind.HANOVER_SUBJECT, "CS");
-    p3.addField(Field.Kind.HANOVER_SUBJECT, "Science");
-    p1.addField(Field.Kind.LOCATION, "Lynn");
-    p2.addField(Field.Kind.LOCATION,"CC");
-    p3.addField(Field.Kind.LOCATION,"Wiley");
-    p1.addField(Field.Kind.COLLECTION_NAME, "Name");
-    p2.addField(Field.Kind.COLLECTION_NAME, "Collection");
-    p3.addField(Field.Kind.COLLECTION_NAME, "Test");
-  }
-
-  @Test
   public void canSortPhotoListByTitle(){
     addThreePhotosToList();
     photoList.sort(new TitleSortingComparator());
@@ -204,5 +152,69 @@ public class PhotoListTests {
     assertSame("Collection", photoList.get(0).getFieldValue(Field.Kind.COLLECTION_NAME));
     assertSame("Name", photoList.get(1).getFieldValue(Field.Kind.COLLECTION_NAME));
     assertSame("Test", photoList.get(2).getFieldValue(Field.Kind.COLLECTION_NAME));
+  }
+
+  @Test
+  public void searchForDate_Value1991_ListOfSizeOne_ExpectOneInFinalList() {
+    photo.addField(Field.Kind.DATE, "1991");
+    photoList.addPhoto(photo);
+    PhotoList test = photoList.search(Field.Kind.DATE, "1991");
+    assertEquals(1, test.getLength());
+    assertEquals("1991", test.get(0).getFieldValue(Field.Kind.DATE));
+  }
+
+  @Test
+  public void searchForDate_Value1991_ListOfSizeThree_ExpectTwoInFinalList() {
+    addThreePhotosToList();
+    PhotoList test = photoList.search(Field.Kind.DATE, "1991");
+    assertEquals(2, test.getLength());
+    assertEquals("1991", test.get(0).getFieldValue(Field.Kind.DATE));
+    assertEquals("1991", test.get(1).getFieldValue(Field.Kind.DATE));
+  }
+
+  @Test
+  public void searchForDate_Value1991_ListOfSizeThree_NoSuchFieldValue() {
+    addThreePhotosToList();
+    PhotoList test = photoList.search(Field.Kind.DATE, "2020");
+    assertEquals(0, test.getLength());
+  }
+
+  private void addThreePhotosToList() {
+    Photo p1 = new Photo(url1, "/tmp");
+    Photo p2 = new Photo(url2, "/tmp") ;
+    Photo p3 = new Photo(url3, "/tmp");
+    photoList.addPhoto(p1);
+    photoList.addPhoto(p2);
+    photoList.addPhoto(p3);
+    setPhoto1Fields(p1);
+    setPhoto2Fields(p2);
+    setPhoto3Fields(p3);
+  }
+
+  private void setPhoto1Fields(Photo p1) {
+    p1.addField(Field.Kind.DATE, "1991");
+    p1.addField(Field.Kind.TITLE, "b");
+    p1.addField(Field.Kind.SUBJECT, "Math");
+    p1.addField(Field.Kind.HANOVER_SUBJECT, "Math");
+    p1.addField(Field.Kind.LOCATION, "Lynn");
+    p1.addField(Field.Kind.COLLECTION_NAME, "Name");
+  }
+
+  private void setPhoto2Fields(Photo p2) {
+    p2.addField(Field.Kind.DATE, "1991");
+    p2.addField(Field.Kind.SUBJECT, "CS");
+    p2.addField(Field.Kind.TITLE, "c");
+    p2.addField(Field.Kind.HANOVER_SUBJECT, "CS");
+    p2.addField(Field.Kind.LOCATION,"CC");
+    p2.addField(Field.Kind.COLLECTION_NAME, "Collection");
+  }
+
+  private void setPhoto3Fields(Photo p3) {
+    p3.addField(Field.Kind.DATE, "2005");
+    p3.addField(Field.Kind.TITLE, "a");
+    p3.addField(Field.Kind.SUBJECT, "Science");
+    p3.addField(Field.Kind.HANOVER_SUBJECT, "Science");
+    p3.addField(Field.Kind.LOCATION,"Wiley");
+    p3.addField(Field.Kind.COLLECTION_NAME, "Test");
   }
 }
