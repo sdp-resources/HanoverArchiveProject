@@ -1,7 +1,6 @@
 package photoarchives;
 
-import java.io.*;
-import java.util.UUID;
+import java.io.File;
 
 public class PhotoArchive {
   private String name;
@@ -29,7 +28,14 @@ public class PhotoArchive {
   }
 
   public void clear() {
+    cleanDirectory();
     this.photos.clear();
+  }
+
+  private void cleanDirectory() {
+    for(File file: imagesDirectory.listFiles())
+      if (!file.isDirectory())
+        file.delete();
   }
 
   public void addPhoto(Photo newPhoto) {
