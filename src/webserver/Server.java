@@ -69,18 +69,18 @@ public class Server {
 
     Photo photo;
     photo = new Photo(url1, archiveDir);
-    photo.addField(Field.Kind.TITLE, new StringFieldValue("John Finley Crow"));
-    photo.addField(Field.Kind.LOCATION, new StringFieldValue("unknown"));
+    photo.addField(Field.Kind.TITLE, "John Finley Crow");
+    photo.addField(Field.Kind.LOCATION, "unknown");
     photoArchive.addPhoto(photo);
 
     photo = new Photo(url2, archiveDir);
-    photo.addField(Field.Kind.TITLE, new StringFieldValue("Crowe-Garrett House"));
-    photo.addField(Field.Kind.LOCATION, new StringFieldValue("Hanover"));
+    photo.addField(Field.Kind.TITLE, "Crowe-Garrett House");
+    photo.addField(Field.Kind.LOCATION, "Hanover");
     photoArchive.addPhoto(photo);
 
     photo = new Photo(url3, archiveDir);
-    photo.addField(Field.Kind.TITLE, new StringFieldValue("Hanover College Campus"));
-    photo.addField(Field.Kind.LOCATION, new StringFieldValue("Hanover"));
+    photo.addField(Field.Kind.TITLE, "Hanover College Campus");
+    photo.addField(Field.Kind.LOCATION, "Hanover");
     photoArchive.addPhoto(photo);
   }
 }

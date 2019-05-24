@@ -20,9 +20,9 @@ public class SimpleDemo  {
   }
 
   public void printLabels(Photo photo) {
-    photo.addField(Field.Kind.LOCATION, new StringFieldValue("Hanover"));
-    photo.addField(Field.Kind.TITLE, new StringFieldValue("Title"));
-    photo.addField(Field.Kind.SUBJECT, new StringFieldValue("Sports"));
+    photo.addField(Field.Kind.LOCATION, "Hanover");
+    photo.addField(Field.Kind.TITLE, "Title");
+    photo.addField(Field.Kind.SUBJECT, "Sports");
     for (Field label : photo.getFields()) {
       System.out.println(label.getKind() + ": " + label.getValue());
     }
@@ -47,14 +47,14 @@ public class SimpleDemo  {
     String url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/John_Finley_Crowe" +
                        ".jpg/506px-John_Finley_Crowe.jpg";
     Photo photo = new Photo(url, IMAGE_DIR);
-    photo.addField(Field.Kind.TITLE, new StringFieldValue("John Finley Crowe"));
+    photo.addField(Field.Kind.TITLE, "John Finley Crowe");
     photoArchive.addPhoto(photo);
   }
 
   public void addPhotoFromUser() {
     Scanner scanner = new Scanner(System.in);
     Photo photo = new Photo(getURL(scanner), IMAGE_DIR);
-    photo.addField(Field.Kind.TITLE, new StringFieldValue(getTitle(scanner)));
+    photo.addField(Field.Kind.TITLE, getTitle(scanner));
     photoArchive.addPhoto(photo);
   }
 

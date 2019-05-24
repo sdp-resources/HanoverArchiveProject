@@ -7,6 +7,7 @@ import photoarchives.StringFieldValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class EditFieldTests {
 
@@ -24,30 +25,22 @@ public class EditFieldTests {
     assertThat(field.getKind().getName(), is("Date"));
   }
 
-  @Ignore
-  @Test
-  public void newFieldHasValue_EmptyString() {
-    assertThat(field.getValue(), is(""));
-  }
-
-  @Ignore
   @Test
   public void changeFieldValue_ExpectChange() {
     field.setValue("this");
     assertThat(field.getValue(), is("this"));
   }
 
-  @Ignore
   @Test
   public void canCreateEmptyField_ExpectEmptyStringAndNONEField(){
     Field newField = new Field();
-    assertThat(newField.getValue(), is(""));
+    assertNull(newField.getValue());
     assertThat(newField.getKind(), is(Field.Kind.NONE));
   }
 
   @Test
   public void canCreateField_GivenKindValuePair(){
-    Field newField = new Field(Field.Kind.DATE, new StringFieldValue("1999"));
+    Field newField = new Field(Field.Kind.DATE, "1999");
     assertThat(newField.getValue(), is("1999"));
     assertThat(newField.getKind(), is (Field.Kind.DATE));
   }

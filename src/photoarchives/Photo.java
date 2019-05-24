@@ -86,7 +86,7 @@ public class Photo {
     return imageFile;
   }
 
-  public void addField(Field.Kind kind, FieldValueInterface value) {
+  public void addField(Field.Kind kind, String value) {
     fields.add(new Field(kind, value));
   }
 

@@ -22,7 +22,7 @@ public class PhotoList implements Iterable<Photo>{
 
   public Photo get(int i) { return photoList.get(i); }
 
-  public PhotoList search(Field.Kind kind, StringFieldValue value) {
+  public PhotoList search(Field.Kind kind, String value) {
     PhotoList searchedList = new PhotoList();
     for (Photo photo : photoList)
     {
@@ -38,7 +38,7 @@ public class PhotoList implements Iterable<Photo>{
     return searchedList;
   }
 
-  private boolean hasMatchingFieldValue(Photo photo, Field.Kind kind, StringFieldValue value) {
+  private boolean hasMatchingFieldValue(Photo photo, Field.Kind kind, String value) {
     return photo.hasField(kind) && photo.getFieldValue(kind).equals(value);
   }
 

@@ -19,9 +19,9 @@ public class FieldSetTest {
   @Before
   public void setUp() throws Exception {
     fields = new FieldSet();
-    field1 = new Field(Field.Kind.DATE, new StringFieldValue("1991"));
-    field2 = new Field(Field.Kind.DESCRIPTION, new StringFieldValue("Test Description"));
-    field3 = new Field(Field.Kind.SUBJECT, new StringFieldValue("CS"));
+    field1 = new Field(Field.Kind.DATE, "1991");
+    field2 = new Field(Field.Kind.DESCRIPTION, "Test Description");
+    field3 = new Field(Field.Kind.SUBJECT, "CS");
   }
 
   @Test

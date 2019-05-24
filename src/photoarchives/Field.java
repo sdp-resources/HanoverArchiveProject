@@ -3,9 +3,9 @@ package photoarchives;
 public class Field {
 
   private Kind kind;
-  private FieldValueInterface value;
+  private String value;
 
-  public Field(Kind kind, FieldValueInterface value) {
+  public Field(Kind kind, String value) {
     this.value = value;
     this.kind =  kind;
   }
@@ -16,7 +16,7 @@ public class Field {
   }
 
   public String getValue() {
-    return value.get();
+    return value;
   }
 
   public Kind getKind() {
@@ -24,7 +24,7 @@ public class Field {
   }
 
   public void setValue(String value) {
-    this.value.add(value);
+    this.value = value;
   }
 
   public void setKind(Kind kind) {
