@@ -22,6 +22,8 @@ public class Server {
     get("/", Server::serveIndex);
     post("/login", Server::processLogin);
     get("/photos", Server::showPhotoList);
+    get("/upload", Server::getUploadForm);
+    post("/upload", Server::uploadPhoto);
 
     setupArchive();
     populateArchive();
@@ -43,6 +45,17 @@ public class Server {
     HashMap<Object, Object> returnedHash = new HashMap<>();
     returnedHash.put("photoArchive", photoArchive);
     return serveTemplate("/PhotoList.handlebars", returnedHash);
+  }
+
+  private static Object getUploadForm(Request req, Response res) {
+    return serveTemplate("/UploadPhoto.handlebars", new HashMap<>());
+  }
+
+  private static Object uploadPhoto(Request req, Response res){
+    String photoLink = req.queryParams("inputPhotoSource");
+    Photo examplePhoto = new Photo(photoLink, archiveDir);
+    photoArchive.addPhoto(examplePhoto);
+    return null;
   }
 
   private static String serveTemplate(String templatePath, HashMap<Object, Object> model) {
