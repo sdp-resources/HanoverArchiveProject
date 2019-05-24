@@ -2,43 +2,44 @@ import org.junit.Before;
 import org.junit.Test;
 import photoarchives.*;
 
+import java.io.File;
+
 import static junit.framework.TestCase.*;
 
-public class PhotoTest {
+public class PhotoTests {
   private Photo photo;
+  private String photoSource = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/John_Finley_Crowe.jpg/506px-John_Finley_Crowe.jpg";
 
   @Before
   public void setUp() {
-    String source = "source";
-    photo = new Photo(source);
+    photo = new Photo();
   }
 
   @Test
-  public void createDefaultImage() {
-    Photo p1 = new Photo();
-    assertNull(p1.getSource());
-    assertNull(p1.getID());
-    assertEquals(0, p1.getFields().size());
+  public void whenDefaultPhotoIsCreated_onlyIdIsSet() {
+    Photo defaultPhoto = new Photo();
+    assertNotNull(defaultPhoto.getID());
+    assertNull(defaultPhoto.getRetrievedFromURL());
+    assertEquals(0, defaultPhoto.getFields().size());
+    assertEquals(0, defaultPhoto.getCategories().size());
   }
 
   @Test
-  public void createImageWithGivenSource() {
-    assertEquals("source", photo.getSource());
-    assertNull(photo.getID());
+  public void whenBuildImagePathIsCalled_itReturnsTheCorrectPath() {
+    String testId = "12345";
+    String testImageDir = "/tmp";
+    String correctPath = "/tmp/image_12345.jpg";
+    Photo testPhoto = new Photo(testId);
+    assertEquals(correctPath, testPhoto.buildImagePath(testImageDir));
   }
 
   @Test
-  public void setNewSource_ExpectChange() {
-    photo.setSource("/usr...");
-    assertEquals("/usr...", photo.getSource());
-  }
-
-  @Test
-  public void setNewID_ExpectChange() {
-    String testID = "001";
-    photo.setID(testID);
-    String photoId = "image_" + testID;
-    assertEquals(photoId, photo.getID());
+  public void whenPhotoIsCreatedFromImageURL_imageIsLoaded() {
+    String imageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/John_Finley_Crowe.jpg/506px-John_Finley_Crowe.jpg";
+    Photo photo = new Photo(imageURL, "/tmp");
+    File imageFile = new File(photo.getImageFile());
+    assertTrue(imageFile.exists());
+    assertEquals(imageURL, photo.getRetrievedFromURL());
   }
 
   @Test
@@ -107,5 +108,14 @@ public class PhotoTest {
     photo.addCategory(Categories.CLASSROOM);
     Categories cat = (Categories) photo.getCategories().get(0);
     assertEquals("Building", cat.getName());
+  }
+
+  @Test
+  public void testGetImageFilename() {
+    String imageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/John_Finley_Crowe.jpg/506px-John_Finley_Crowe.jpg";
+    String imageDir = "/tmp";
+    Photo photo = new Photo(imageURL, imageDir);
+    String imageName = Photo.IMAGE_PREFIX + photo.getID() + "." + Photo.FORMAT;
+    assertEquals(imageName, photo.getImageFilename());
   }
 }

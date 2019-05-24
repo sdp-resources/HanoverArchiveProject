@@ -12,13 +12,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 public class PhotoListTests {
+  private final String url1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/John_Finley_Crowe.jpg/506px-John_Finley_Crowe.jpg";
+  private final String url2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Crowe-Garritt_House_in_color.jpg/800px-Crowe-Garritt_House_in_color.jpg";
+  private final String url3 = "https://upload.wikimedia.org/wikipedia/commons/1/1f/Hanover_College_Campus_Aerial.jpg";
   private PhotoList photoList;
   private Photo photo;
 
   @Before
   public void setUp() {
     photoList = new PhotoList();
-    photo = new Photo("test source");
+    photo = new Photo(url1, "/tmp");
   }
 
   @Test
@@ -32,14 +35,14 @@ public class PhotoListTests {
   public void getFirstPhoto_ListOfLengthOne() {
     photoList.addPhoto(photo);
     Photo photo = photoList.get(0);
-    assertEquals("test source", photo.getSource());
+    assertEquals(url1, photo.getRetrievedFromURL());
   }
 
   @Test
   public void getSecondPhoto_ListOfLengthThree() {
     addThreePhotosToList();
     Photo photo = photoList.get(1);
-    assertEquals("test source2", photo.getSource());
+    assertEquals(url2, photo.getRetrievedFromURL());
   }
 
   @Test
@@ -81,7 +84,7 @@ public class PhotoListTests {
     addThreePhotosToList();
     Iterator<Photo> iter = photoList.iterator();
     Photo test = iter.next();
-    assertEquals("test source1", test.getSource());
+    assertEquals(url1, test.getRetrievedFromURL());
   }
 
   @Test
@@ -90,7 +93,7 @@ public class PhotoListTests {
     Iterator<Photo> iter = photoList.iterator();
     Photo first = iter.next();
     Photo second = iter.next();
-    assertEquals("test source2", second.getSource());
+    assertEquals(url2, second.getRetrievedFromURL());
   }
 
   @Ignore
@@ -121,12 +124,9 @@ public class PhotoListTests {
   }
 
   private void addThreePhotosToList() {
-    Photo p1 = new Photo("test source1" );
-    p1.setID("First");
-    Photo p2 = new Photo("test source2") ;
-    p2.setID("Second");
-    Photo p3 = new Photo("test source3");
-    p3.setID("Third");
+    Photo p1 = new Photo(url1, "/tmp");
+    Photo p2 = new Photo(url2, "/tmp") ;
+    Photo p3 = new Photo(url3, "/tmp");
     photoList.addPhoto(p1);
     photoList.addPhoto(p2);
     photoList.addPhoto(p3);
@@ -148,9 +148,8 @@ public class PhotoListTests {
     p1.addField(Field.Kind.COLLECTION_NAME, new StringFieldValue("Name"));
     p2.addField(Field.Kind.COLLECTION_NAME, new StringFieldValue("Collection"));
     p3.addField(Field.Kind.COLLECTION_NAME, new StringFieldValue("Test"));
-
-
   }
+
   @Test
   public void canSortPhotoListByTitle(){
     addThreePhotosToList();
@@ -158,8 +157,8 @@ public class PhotoListTests {
     assertSame("a", photoList.get(0).getFieldValue(Field.Kind.TITLE));
     assertSame("b", photoList.get(1).getFieldValue(Field.Kind.TITLE));
     assertSame("c", photoList.get(2).getFieldValue(Field.Kind.TITLE));
-
   }
+
   @Test
   public void canSortPhotoListByDate(){
     addThreePhotosToList();
@@ -171,8 +170,8 @@ public class PhotoListTests {
     assertSame("1991", photoList.get(1).getFieldValue(Field.Kind.DATE));
     assertSame("1991", photoList.get(2).getFieldValue(Field.Kind.DATE));
     assertSame("2005", photoList.get(3).getFieldValue(Field.Kind.DATE));
-
   }
+
   @Test
   public void canSortPhotoListBySubject(){
     addThreePhotosToList();
@@ -180,8 +179,8 @@ public class PhotoListTests {
     assertSame("CS", photoList.get(0).getFieldValue(Field.Kind.SUBJECT));
     assertSame("Math", photoList.get(1).getFieldValue(Field.Kind.SUBJECT));
     assertSame("Science", photoList.get(2).getFieldValue(Field.Kind.SUBJECT));
-
   }
+
   @Test
   public void canSortPhotoListByHanover_Subject(){
     addThreePhotosToList();
@@ -189,8 +188,8 @@ public class PhotoListTests {
     assertSame("CS", photoList.get(0).getFieldValue(Field.Kind.HANOVER_SUBJECT));
     assertSame("Math", photoList.get(1).getFieldValue(Field.Kind.HANOVER_SUBJECT));
     assertSame("Science", photoList.get(2).getFieldValue(Field.Kind.HANOVER_SUBJECT));
-
   }
+
   @Test
   public void canSortPhotoListByLocation(){
     addThreePhotosToList();
@@ -198,8 +197,8 @@ public class PhotoListTests {
     assertSame("CC", photoList.get(0).getFieldValue(Field.Kind.LOCATION));
     assertSame("Lynn", photoList.get(1).getFieldValue(Field.Kind.LOCATION));
     assertSame("Wiley", photoList.get(2).getFieldValue(Field.Kind.LOCATION));
-
   }
+
   @Test
   public void canSortPhotoListByCollectionName(){
     addThreePhotosToList();
@@ -207,6 +206,5 @@ public class PhotoListTests {
     assertSame("Collection", photoList.get(0).getFieldValue(Field.Kind.COLLECTION_NAME));
     assertSame("Name", photoList.get(1).getFieldValue(Field.Kind.COLLECTION_NAME));
     assertSame("Test", photoList.get(2).getFieldValue(Field.Kind.COLLECTION_NAME));
-
   }
 }

@@ -3,10 +3,13 @@ import java.util.*;
 
 public class PhotoList implements Iterable<Photo>{
   private ArrayList<Photo> photoList;
-  private  Iterator<Photo> PhotoListIterator;
 
   public PhotoList() {
     photoList = new ArrayList<>();
+  }
+
+  public Iterator<Photo> iterator() {
+    return photoList.iterator();
   }
 
   public void addPhoto(Photo photo) { photoList.add(photo); }
@@ -25,7 +28,11 @@ public class PhotoList implements Iterable<Photo>{
     {
       if (hasMatchingFieldValue(photo, kind, value))
       {
-        searchedList.addPhoto(photo);
+          searchedList.addPhoto(photo);
+      }
+      else
+      {
+        continue;
       }
     }
     return searchedList;
@@ -39,9 +46,5 @@ public class PhotoList implements Iterable<Photo>{
     Collections.sort(photoList, SortingComparator);
   }
 
-  public Iterator<Photo> iterator() {
-    PhotoListIterator = photoList.iterator();
-    return PhotoListIterator;
-  }
 }
 

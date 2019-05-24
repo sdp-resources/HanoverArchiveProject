@@ -11,7 +11,7 @@ public class SimpleDemo  {
   public void runDemo() {
     photoArchive.initialize();
     System.out.println(ARCHIVE_NAME + " created!");
-    addHananiah();
+    addJohnFinleyCrowe();
     System.out.println("\nCurrent Archive:\n");
     printPhotoList();
     //System.out.println("Our Archive has " + photoArchive.getPhotoList().getLength() + " photo!");
@@ -32,32 +32,28 @@ public class SimpleDemo  {
     for (Photo photo : photoArchive.getPhotoList()) {
       System.out.println("photo id: " + photo.getID());
       System.out.println("title: " + photo.getFieldValue(Field.Kind.TITLE));
-      System.out.println("image location: " + photo.getImageLocation());
+      System.out.println("image location: " + photo.getImageFile());
     }
   }
 
   private void waitForEnter() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("<enter> when finished");
-    while (scanner.hasNextLine()) {
-
+    while (! (scanner.nextLine()).isEmpty()) {
     }
   }
 
-  public void addHanoverLogo() {
-    Photo photo = new Photo("https://www.hanover.edu/images/site/logos/logo.png");
-    photo.addField(Field.Kind.TITLE, new StringFieldValue("Hanover College Logo"));
-    photoArchive.addPhoto(photo);
-
-  } public void addHananiah() {
-    Photo photo = new Photo("assets/public/hananiah.jpeg");
-    photo.addField(Field.Kind.TITLE, new StringFieldValue("Hananiah, Age 15"));
+  public void addJohnFinleyCrowe() {
+    String url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/John_Finley_Crowe" +
+                       ".jpg/506px-John_Finley_Crowe.jpg";
+    Photo photo = new Photo(url, IMAGE_DIR);
+    photo.addField(Field.Kind.TITLE, new StringFieldValue("John Finley Crowe"));
     photoArchive.addPhoto(photo);
   }
 
   public void addPhotoFromUser() {
     Scanner scanner = new Scanner(System.in);
-    Photo photo = new Photo(getURL(scanner));
+    Photo photo = new Photo(getURL(scanner), IMAGE_DIR);
     photo.addField(Field.Kind.TITLE, new StringFieldValue(getTitle(scanner)));
     photoArchive.addPhoto(photo);
   }

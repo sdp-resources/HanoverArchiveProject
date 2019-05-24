@@ -15,8 +15,6 @@ public class Server {
 
   private static String archiveDir;
   private static PhotoArchive photoArchive;
-  private static Photo newPhoto;
-  private static Photo newPhoto2;
   private static HandlebarsTemplateEngine templateEngine = new HandlebarsTemplateEngine();
 
   public static void main(String[] args) {
@@ -24,7 +22,9 @@ public class Server {
     get("/", Server::serveIndex);
     post("/login", Server::processLogin);
     get("/photos", Server::showPhotoList);
-//    get("/photoDetails", Server:showPhotoDetails);
+
+    setupArchive();
+    populateArchive();
   }
 
   private static Object serveIndex(Request req, Response res) {
@@ -39,40 +39,48 @@ public class Server {
 
   private static Object showPhotoList(Request req, Response res) {
     // TODO: Get this displaying photos
-    archiveDir = "assets/public/image_archive";
-    photoArchive = new PhotoArchive("Archive", archiveDir);
-    photoArchive.initialize();
-
-    newPhoto = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
-                               "/hananiah.jpeg");
-    newPhoto.addField(Field.Kind.TITLE, new StringFieldValue("Nene"));
-    newPhoto.addField(Field.Kind.LOCATION, new StringFieldValue("Covenant Christian"));
-    photoArchive.addPhoto(newPhoto);
-
-    newPhoto2 = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
-                               "/haris.jpeg");
-    newPhoto2.addField(Field.Kind.TITLE, new StringFieldValue("Haris"));
-    newPhoto2.addField(Field.Kind.LOCATION, new StringFieldValue("Greece"));
-    photoArchive.addPhoto(newPhoto2);
 
     HashMap<Object, Object> returnedHash = new HashMap<>();
     returnedHash.put("photoArchive", photoArchive);
     return serveTemplate("/PhotoList.handlebars", returnedHash);
   }
 
-//  private static Object showPhotoDetails(Request req, Response res) {
-//    archiveDir = "/tmp/image_archive";
-//    photoArchive = new PhotoArchive("Archive", archiveDir);
-//    photoArchive.initialize();
-//
-//    newPhoto = new Photo("file:///home/kimlaa21/cs321/HanoverArchiveProject/assets/public" +
-//                               "/hananiah.jpeg");
-//    newPhoto.addField(PhotoField.Kind.TITLE, new StringFieldValue("Nae Nae"));
-//    newPhoto.addField(PhotoField.Kind.LOCATION, new StringFieldValue("Covenant Christian"));
-//    photoArchive.addPhoto(newPhoto);
-//  }
-
   private static String serveTemplate(String templatePath, HashMap<Object, Object> model) {
     return templateEngine.render(new ModelAndView(model, templatePath));
+  }
+
+  private static void setupArchive() {
+    archiveDir = "assets/public/image_archive";
+    photoArchive = new PhotoArchive("Archive", archiveDir);
+    photoArchive.initialize();
+  }
+
+  private static void populateArchive() {
+    String url1 = "https://upload.wikimedia" +
+                                             ".org/wikipedia/commons/thumb/c/c7/John_Finley_Crowe.jpg/506px-John_Finley_Crowe.jpg";
+    String url2 = "https://upload.wikimedia" +
+                                             ".org/wikipedia/commons/thumb/d/dc/Crowe-Garritt_House_in_color.jpg/800px-Crowe-Garritt_House_in_color.jpg";
+    String url3 = "https://upload.wikimedia" +
+                                             ".org/wikipedia/commons/1/1f/Hanover_College_Campus_Aerial.jpg";
+
+    archiveDir = "assets/public/image_archive";
+    photoArchive = new PhotoArchive("Archive", archiveDir);
+    photoArchive.initialize();
+
+    Photo photo;
+    photo = new Photo(url1, archiveDir);
+    photo.addField(Field.Kind.TITLE, new StringFieldValue("John Finley Crow"));
+    photo.addField(Field.Kind.LOCATION, new StringFieldValue("unknown"));
+    photoArchive.addPhoto(photo);
+
+    photo = new Photo(url2, archiveDir);
+    photo.addField(Field.Kind.TITLE, new StringFieldValue("Crowe-Garrett House"));
+    photo.addField(Field.Kind.LOCATION, new StringFieldValue("Hanover"));
+    photoArchive.addPhoto(photo);
+
+    photo = new Photo(url3, archiveDir);
+    photo.addField(Field.Kind.TITLE, new StringFieldValue("Hanover College Campus"));
+    photo.addField(Field.Kind.LOCATION, new StringFieldValue("Hanover"));
+    photoArchive.addPhoto(photo);
   }
 }

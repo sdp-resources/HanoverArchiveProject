@@ -1,9 +1,6 @@
 package photoarchives;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.URL;
 import java.util.UUID;
 
 public class PhotoArchive {
@@ -36,28 +33,8 @@ public class PhotoArchive {
   }
 
   public void addPhoto(Photo newPhoto) {
+    //newPhoto.loadImage(imagesDirectory.getPath());
     this.photos.addPhoto(newPhoto);
-    newPhoto.setID(createUniqueIdForUploadedPhoto());
-    try {
-      BufferedImage image = loadImageFromSource(newPhoto);
-      newPhoto.setImageLocation(imagesDirectory.getPath());
-      File imageInArchive = new File(newPhoto.getImageLocation());
-      ImageIO.write(image, "jpeg", imageInArchive);
-    } catch (IOException e) {
-    }
-  }
-
-  private String createUniqueIdForUploadedPhoto() {
-    return UUID.randomUUID().toString();
-  }
-
-  private BufferedImage loadImageFromSource(Photo newPhoto) throws IOException {
-    return ImageIO.read(new URL(newPhoto.getSource()));
-  }
-
-  public void addURLPhoto(String url) {
-    Photo newPhoto = new Photo(url);
-    addPhoto(newPhoto);
   }
 
   public void initialize() {
