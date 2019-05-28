@@ -1,24 +1,20 @@
 package photoarchives;
 
-public class StringFieldValue implements FieldValueInterface{
-  private String value;
+public class StringFieldValue extends FieldValue {
 
-  public StringFieldValue(String value){
+  private final Field.Kind kind;
+  private  String value;
+
+  public StringFieldValue(Field.Kind kind, String value) {
+    this.kind = kind;
     this.value = value;
   }
 
-  @Override
-  public void add(String string) {
-    this.value = string;
-  }
-
-  @Override
-  public String get() {
+  public String getValue() {
     return value;
   }
 
-  @Override
-  public String toString(){
-    return this.value;
+  public void setValue(String stringValue) {
+    this.value = stringValue;
   }
 }
